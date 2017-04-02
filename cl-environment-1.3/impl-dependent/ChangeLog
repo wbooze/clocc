@@ -1,0 +1,39 @@
+2004-01-08  Marco Antoniotti  <marcoxa@vault.valis.nyu.edu>
+
+	* cmucl.lisp, clisp.lisp:
+	Minor changes to the file (copyright fixes etc etc)
+
+	* allegro.lisp: Minor changes to the file (fixed copyright, etc etc)
+
+2002-06-14  Marco Antoniotti  <marcoxa@vault.valis.nyu.edu>
+
+	* lcl.lisp: Fixed a few mistakes with Lucid specicication.
+
+	* sbcl.lisp: File added.
+
+2002-03-14  kevinrosenberg  <kevinrosenberg@vault>
+
+	* allegro.lisp:
+	Added exported binary-directory-name that returns a unique string
+	for an implemenation that is appropriate for a binary directory name.
+
+	Changed a few mode lines to Lisp from CLtL.
+
+2002-03-06  kevinrosenberg  <kevinrosenberg@vault>
+
+	* clisp.lisp:
+	Updated some CLISP functions invocations from lisp: package to ext: package
+
+2002-02-27  Marco Antoniotti  <marcoxa@vault.valis.nyu.edu>
+
+	* lispworks.lisp: Updated method for current directory.
+
+2001-10-08  Marco Antoniotti  <marcoxa@vault.valis.nyu.edu>
+
+	* corman.lisp: Added file for Corman Lisp dependencies.
+
+2001-08-29  Marco Antoniotti  <marcoxa@vault.valis.nyu.edu>
+
+	* lispworks.lisp, lcl.lisp, cmucl.lisp, clisp.lisp, allegro.lisp:
+	File added.
+

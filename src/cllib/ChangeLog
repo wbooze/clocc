@@ -1,0 +1,4335 @@
+2011-02-13  Sam Steingold  <sds@loiso>
+
+	* grepfin.lisp: implement grepfin:server
+
+	* htmlgen.lisp (with-html-tag): add and export
+
+	* doall.lisp: fix the way "monitor" is required
+
+2010-12-31  Sam Steingold  <sds@loiso>
+
+	* grepfin.lisp:
+	add file+holding+stock csv-i/o and save holdings to file
+
+	* csv.lisp: add new-csv; export csv-i/o accessors
+
+2010-12-30  Sam Steingold  <sds@loiso>
+
+	* grepfin.lisp (holding-%-of-fund, holding-%-of-stock, holding-market-cap):
+	add extras
+	(<*, >*): add helpers for comparing possibly NIL values
+	(query-stocks, query-funds): accept :csv; update help
+
+	* csv.lisp: csv-write: use `write-list-to-file'
+
+	* fileio.lisp:
+	write-list-to-stream, write-list-to-file: accept print-header
+
+	* csv.lisp: add docstrings
+
+2010-12-29  Sam Steingold  <sds@loiso>
+
+	* grepfin.lisp: add a missing terpri
+
+	* grepfin.lisp: move from package CLLIB to the new package GREPFIN
+
+	* csv.lisp: export FLOAT%
+
+	* gq.lisp: move from package CLLIB to the new package GETQUOTE
+
+	* html.lisp: export MAKE-TEXT-STREAM
+
+	* xml.lisp: export XML-COMMENT and XML-COMMENT-DATA
+
+	* url.lisp: export COPY-URL and *URL-MAX-RETRY*
+
+	* date.lisp: export DATE-P and FIX-DATE
+
+	* bayes.lisp: nb-boost: return best-round as the tertiary value
+
+	* base.lisp: export MK-PATH
+
+	* gq.lisp:
+	when using MK-DEFSYSTEM, ASDF-based NET.HTML.PARSER is not available
+
+	* csv.lisp: add docstring for DEFCSV
+
+	* grepfin.lisp: add grepfin-init
+
+2010-12-28  Sam Steingold  <sds@loiso>
+
+	* grepfin.lisp (holdings-total-value, holding-stock, show-extras, query-funds@:help):
+	add
+
+	* grepfin.lisp:
+	add ensure-data to grepfin which thus depends on miscprint
+
+	* csv.lisp: csv-parse-string: handle quoted strings
+	csv-trim: revert last patch
+
+	* csv.lisp: csv depends on cllib-symb and port-mop
+
+	* grepfin.lisp: add grepfin.lisp
+
+	* tests.lisp: test-csv: add
+
+	* csv.lisp:
+	defcsv: add doc strings to slot readers and name the csv-reader & csv-writer
+
+	* symb.lisp (symbol-prepend): add
+
+	* csv.lisp (defcsv, csv-read, csv-write): add generic CSV i/o
+
+2010-12-27  Sam Steingold  <sds@loiso>
+
+	* csv.lisp, data.lisp:
+	*CSV-JUNK* replaces the :JUNK-ALLOWED argument and can also be :KEEP
+
+	* csv.lisp: *csv-first-line-names*: fix doc
+
+2010-12-26  Sam Steingold  <sds@loiso>
+
+	* csv.lisp: csv-trim: strip the leading and trailing quote
+
+	* csv.lisp:
+	csv-read-file: avoid a warning "variable COMPLETE is assigned but not read"
+
+2010-11-16  Sam Steingold  <sds@loiso>
+
+	* gq.lisp: formatting
+
+2010-11-15  Sam Steingold  <sds@loiso>
+
+	* gq.lisp: get holders of a stock
+
+	* gq.lisp:
+	implement getting the list of holdings of a given mutual fund
+	using finance.yahoo.com and cl-html-parse
+
+	* string.lisp (edit-distance): remove unused variable
+
+2010-09-22  rtoy  <rtoy@loiso>
+
+	* rng.lisp:
+	o Add some comments about the need to include cllib-base and
+	  cllib-withtype just to get dfloat defined.
+	o Remove old implementation of NON-NEGATIVE-FLOAT for cmucl with
+	  :negative-zero-is-not-zero feature.  This no longer exists and has
+	  not been supported for quite some time.
+	o Update some timing results using a more up-to-date version of CMUCL
+	  with sse2 running on a 2 GHz Core 2 Duo.
+
+2010-08-20  Sam Steingold  <sds@loiso>
+
+	* tests.lisp:
+	move post-compile from cllib.system to tests.lisp; support asdf
+
+	* bayes.lisp: fix types in defcustom
+
+2010-07-15  Sam Steingold  <sds@loiso>
+
+	* bayes.lisp: comment
+
+	* bayes.lisp: add boosting
+
+	* miscprint.lisp: add COPY-HASH-TABLE
+
+	* bayes.lisp, tests.lisp:
+	add FEATURE-GROUPS&*NB-DESCRIBE-FEATURE-GROUPER* and use them in DESCRIBE-OBJECT
+
+	* bayes.lisp: nb-model-merge: use CLLIB:ARRAY-LIN-COMB
+
+	* tests.lisp: test-bayes: add mod4-6
+
+	* bayes.lisp:
+	add DESCRIBE-OBJECT method for NB-MODEL; use TOP-BOTTOM-UI
+
+2010-07-12  Sam Steingold  <sds@loiso>
+
+	* tests.lisp (test-bayes): add a test for `train-test'
+
+	* bayes.lisp (nb-evaluate): fix logging and mutual-information-N call
+
+	* bayes.lisp (train-test): better logging
+
+2010-07-07  Sam Steingold  <sds@loiso>
+
+	* xml.lisp (xml-mapcan, xml-find-name, xml-find-id): add
+
+	* xml.lisp: read-xml: parse hex char codes in hex
+
+2010-07-06  Sam Steingold  <sds@loiso>
+
+	* bayes.lisp: use cllib:mesg
+
+	* log.lisp: print-log-p: export
+	*print-log*: add :bayes
+
+	* bayes.lisp: *prune-methods*: add
+	nb-model-prune: accept :name
+	train-test: add
+
+	* miscprint.lisp: print-counts: `count-ht' can be a sequence
+
+	* miscprint.lisp: (c)year
+
+	* miscprint.lisp: print-counts: remove unused local variable
+
+	* bayes.lisp (feature-counts): extract from `nb-add-observation'
+	(nb-add-observation): use it
+	(nb-model-merge): add
+
+	* bayes.lisp: add nb-evaluate
+
+	* bayes.lisp: nb-model-prune: fix last patch
+
+	* lift.lisp, math.lisp:
+	add suffix "-2" to dependency, proficiency, and correlation
+
+	* math.lisp: fix doc case
+
+	* bayes.lisp: spelling
+
+	* bayes.lisp: nb-model-prune: accept FEATURE-QUALITY argument
+	feature-weight, feature-power: export
+
+2010-07-02  Sam Steingold  <sds@loiso>
+
+	* tests.lisp: test-bayes: test logodds+
+
+	* tests.lisp: add test-bayes
+
+	* bayes.lisp: add logodds-to-prob & best-class; use +/- infinity & NaN
+
+	* bayes.lisp: print-object: fix a typo
+
+	* bayes.lisp: finish nb-predict-classes and add exports
+
+	* bayes.lisp: oops in nb-model-check & nb-model-prune
+
+	* bayes.lisp: add bayes.lisp: Naive Bayesian classifier
+
+2010-07-01  Sam Steingold  <sds@loiso>
+
+	* math.lisp: comment
+
+2009-12-02  Sam Steingold  <sds@loiso>
+
+	* url.lisp (open-url): accept :out
+	(with-open-url): accept :out; :err defaults to *url-error*
+
+2009-04-03  Sam Steingold  <sds@loiso>
+
+	* miscprint.lisp (print-counts):
+	make sure that the data and counts fit column widths,
+	accept :CWIDTH and :OWIDTH
+
+	* miscprint.lisp (print-counts):
+	report raw percentages in addition to the cumulative ones
+
+	* gnuplot.lisp: help formatting
+
+	* gnuplot.lisp (plot-histogram):
+	when :TITLE is a list, it is concatenated as a STRING
+	 and the MDL is appended to it.
+
+	* fileio.lisp: use "byte~:p" instead of "bytes"
+
+2009-03-11  Sam Steingold  <sds@loiso>
+
+	* math.lisp (discretize-by-width): add
+	(mutual-information-continuous): use it and MUTUAL-INFORMATION-N,
+	 accept DISCRETIZE-* and LOGSCALE-*
+
+	* lift.lisp (discretize-by-height): rename from DISCRETIZE
+
+	* math.lisp (entropy-ht): extract from ENTROPY-SEQUENCE
+	(entropy-sequence): use it
+	(mutual-information-N): add
+	(mutual-information-2): renamed from MUTUAL-INFORMATION
+
+	* math.lisp: discreet->discrete
+
+2009-03-10  Sam Steingold  <sds@loiso>
+
+	* math.lisp: add mutual-information-continuous
+
+2009-03-09  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp: comment on :data-style
+
+	* csv.lisp: csv-read-file: accept :separator
+
+	* data.lisp: analyse-csv: accept :separator
+
+	* data.lisp: analyse-csv: use *csv-first-line-names*
+
+	* csv.lisp: *csv-first-line-names*: add
+
+2008-11-24  Sam Steingold  <sds@loiso>
+
+	* tests.lisp: deftest: new macro; used by all test functions
+
+	* tests.lisp: test-xml: update entity count
+
+	* tests.lisp: test-lift: add
+
+2008-10-10  Sam Steingold  <sds@loiso>
+
+	* math.lisp (ode1):
+	handle negative dx; do not compute k1-4 unless needed
+
+2008-09-24  Sam Steingold  <sds@loiso>
+
+	* url.lisp (url-open-http): also include port number in the Host header
+
+2008-09-23  Sam Steingold  <sds@loiso>
+
+	* url.lisp: loop indentation
+
+	* url.lisp (url-open-http):
+	mention http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
+
+2008-09-22  Sam Steingold  <sds@loiso>
+
+	* autoload.lisp (autoload-stream):
+	SKIP-TO-LINE no longer raises exceptions
+
+	* cvs.lisp (cvs-read-file): check SKIP-TO-LINE return value
+
+	* fileio.lisp (skip-to-line):
+	return NIL instead of signaling an error when line is not found
+
+	* clhs.lisp (*clhs-root*): init to LW because lisp.org is dead
+	(clhs-version): add slot ROOTS
+	(clhs-init): :ROOT argument binds *CLHS-ROOT*
+	(clhs-write-entities, clhs-doc): accept :ROOT and :FORCE
+	(regenerate-etc-files): add and export
+
+	* url.lisp (*url-user-agent*): also include lisp-implementation-version
+
+2008-09-19  Sam Steingold  <sds@loiso>
+
+	* tests.lisp (test-math): test BINARY-SEARCH
+
+	* math.lisp (binary-search): accept :FMID
+	(mid-real, mid-integer): add possible values for :FMID
+
+	* math.lisp (ode1): use rk4
+
+2008-09-17  Sam Steingold  <sds@loiso>
+
+	* math.lisp (ode1): Solve a first order ODE
+
+2008-08-04  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (internal-with-plot-stream):
+	mention title in the messages
+
+	* gnuplot.lisp (with-plot-stream):
+	fix doc: instead of XDATA, accept XTIMEFMT & YTIMEFMT
+	(make-plot): rename TIMEFMT to XTIMEFMT and accept YTIMEFMT
+	(plot-dated-lists): TIMEFMT -> XTIMEFMT
+
+2008-06-16  Sam Steingold  <sds@loiso>
+
+	* symb.lisp, tests.lisp, tilsla.lisp, url.lisp, withtype.lisp, xml.lisp, fin.lisp, geo.lisp, getopt.lisp, gnuplot.lisp, gq.lisp, h2lisp.lisp, html.lisp, htmlgen.lisp, inspect.lisp, iter.lisp, laser.lisp, lift.lisp, list.lisp, log.lisp, math.lisp, matrix.lisp, miscprint.lisp, ocaml.lisp, octave.lisp, prompt.lisp, rpm.lisp, server.lisp, simple.lisp, sorted.lisp, stat.lisp, string.lisp, animals.lisp, autoload.lisp, base.lisp, base64.lisp, card.lisp, check.lisp, clhs.lisp, closio.lisp, csv.lisp, cvs.lisp, data.lisp, date.lisp, datedl.lisp, doall.lisp, elisp.lisp, fileio.lisp:
+	gpl v2 --> v2+
+
+2008-06-04  Sam Steingold  <sds@loiso>
+
+	* inspect.lisp (get-insp): accept :w and :n
+	(print-inspection, inspect-frontend): say when more slots are available
+	(inspect): bind *INSPECT-LENGTH* so that :w & :n
+	do not act across inspect invocations
+
+2008-05-27  Sam Steingold  <sds@loiso>
+
+	* fileio.lisp: (skip-to-line, skip-search, skip-search-or):
+	also return line number and print timing
+
+2008-05-08  Sam Steingold  <sds@loiso>
+
+	* math.lisp (sample-lines): add
+
+	* fileio.lisp (write-lines-to-file, read-lines-from-file): add
+
+2008-05-07  Sam Steingold  <sds@loiso>
+
+	* url.lisp (http-proxy): handle trailing /
+
+2008-03-24  Sam Steingold  <sds@loiso>
+
+	* date.lisp (span->string, string->span): add
+
+	* date.lisp: fix printing non-integer DTTMs
+	(date2string, time2string): add
+	(date-formatter): use them
+
+2008-03-10  Sam Steingold  <sds@loiso>
+
+	* miscprint.lisp (print-counts):
+	print most common first, also print cumulative counts
+
+2008-01-30  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (plot-lists): handle :XLOGSCALE correctly
+
+2007-11-06  Sam Steingold  <sds@loiso>
+
+	* csv.lisp (class-csv-header, class-csv-print): add
+
+2007-09-21  Sam Steingold  <sds@loiso>
+
+	* tests.lisp (test-iter):
+	do not call destructive NREVERSE on constant data
+
+	* log.lisp (with-timing): fix last patch
+
+	* rng.lisp: avoid non-top-level declaim
+	(+beta-algo-go+): use defconst
+
+	* animals.lisp, autoload.lisp, base.lisp, base64.lisp, card.lisp, check.lisp, clhs.lisp, closio.lisp, csv.lisp, cvs.lisp, data.lisp, date.lisp, datedl.lisp, doall.lisp, elisp.lisp, fileio.lisp, fin.lisp, geo.lisp, getopt.lisp, gnuplot.lisp, gq.lisp, h2lisp.lisp, html.lisp, htmlgen.lisp, inspect.lisp, iter.lisp, laser.lisp, lift.lisp, list.lisp, log.lisp, math.lisp, matrix.lisp, miscprint.lisp, ocaml.lisp, octave.lisp, prompt.lisp, rng.lisp, rpm.lisp, server.lisp, simple.lisp, sorted.lisp, stat.lisp, string.lisp, symb.lisp, tests.lisp, tilsla.lisp, url.lisp, withtype.lisp, xml.lisp (eval-when):
+	use ANSI CL (keyword) situations
+
+	* string.lisp (*string-junk*): use a more defensive type declaration
+
+	* csv.lisp (with-csv): remove unused gensym variable
+
+	* log.lisp (with-timing/progress): avoid an "unused variable" warning
+
+	* log.lisp (with-timing):
+	avoid SBCL warnings by defining PRO, PRO1 & PRO1-COUNT
+	only when they are going to be used
+
+2007-06-22  Sam Steingold  <sds@loiso>
+
+	* math.lisp (has-divisors): add
+	(primes-to, primep): use it
+	(primes-to): report final timing when progress reports are requested
+
+	* autoload.lisp (*autoload-defun*): do not set clisp file doc
+
+2007-06-21  Sam Steingold  <sds@loiso>
+
+	* data.lisp: revert last patch
+
+	* data.lisp:
+	define type TABLE before it is used in STAT-COLUMN definition
+	Reported by Aneil Mallavarapu <amallavarapu@users.sf.net>
+
+2007-05-10  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (plot-ulam): add
+
+	* math.lisp (*ulam-base*, ulam-n2xy, ulam-xy2n, show-ulam): Ulam spiral
+	http://en.wikipedia.org/wiki/Ulam_spiral
+
+	* fin.lisp (option): new struct
+	(plot-options, option-p&l): new functions
+
+	* gnuplot.lisp (range-limit): new type
+	(plot-axis): use it
+	(plot-lists-arg): :XB & :XE default to '*; do not compute them
+	(plot-formula): extracted from PLOT-LINE-STR & PLOT-QUAD-STR
+	(plot-line-str, plot-quad-str): use it
+
+	* data.lisp (plot-columns):
+	do not pass ranges because of possible logscale problems
+
+2007-05-06  Sam Steingold  <sds@loiso>
+
+	* data.lisp (restat-table): accept :COLUMN-MODIFIERS
+	(summarize): accept :SLOTS
+
+	* data.lisp (plot-columns): accept :KEY1 and :KEY2
+
+	* data.lisp (column-name-sc): barf on invalid string arguments
+
+	* data.lisp (strings-to-nums): fix some messages
+
+	* data.lisp (get-column-names): return a vector
+
+2007-04-26  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (plot-error-bars):
+	plot several series, each with its own color
+
+2007-04-25  Sam Steingold  <sds@loiso>
+
+	* ocaml.lisp (def-sexp-to): accept :JUNK-ALLOWED
+
+	* data.lisp (plot-columns): pass :QUADS and :LINES to PLOT-COLUMNS
+	(table-select): better doc
+
+2007-04-22  Sam Steingold  <sds@loiso>
+
+	* data.lisp (column-histogram2, table-copy, correlation-columns): add
+
+	* math.lisp (covariance1): accept mean0 and mean1
+
+2007-04-20  Sam Steingold  <sds@loiso>
+
+	* data.lisp (analyse-csv):
+	accept JUNK-ALLOWED and pass it on to CSV-READ-FILE
+
+	* data.lisp: message spelling
+
+	* csv.lisp (with-csv):
+	JUNK-ALLOWED controls handling of records of wrong length
+	(csv-read-file): accept JUNK-ALLOWED
+
+2007-04-13  Sam Steingold  <sds@loiso>
+
+	* miscprint.lisp (print-counts): caller calls COUNT-ALL, not we
+
+	* gnuplot.lisp (make-plot): GRID defaults to T
+	(plot-histogram): remove NBINS from OPTS
+
+	* data.lisp:
+	data.lisp depends on miscprint.lisp because of PRINT-COUNTS
+	(*print-bad-number-limit*): add
+	(strings-to-nums): accept :PRINT-BAD-NUMBER-LIMIT; use PRINT-COUNTS
+
+	* tests.lisp (test-matrix-inverse): tweak message
+
+	* matrix.lisp (matrix-inverse): init logdet with 0, not 1
+
+2007-03-13  Sam Steingold  <sds@loiso>
+
+	* fileio.lisp (skip-to-line, skip-search):
+	:OUT is now a keyword, also accept :START
+
+	* cvs.lisp (cvs-read-file):
+	do not pass the optional OUT argument to SKIP-TO-LINE
+
+	* laser.lisp (test-printing): add
+
+2007-03-11  Sam Steingold  <sds@loiso>
+
+	* data.lisp, gnuplot.lisp, stat.lisp:
+	for histograms, nbins is now an optional keyword argument,
+	defaults to ISQRT of the data set size
+
+2007-03-08  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (plot-spec): default GRID to T
+
+2007-03-02  Sam Steingold  <sds@loiso>
+
+	* data.lisp (get-column-name, get-column-names): added
+	(analyse-csv): when there is no names line, use GET-COLUMN-NAMES
+
+2007-01-03  Sam Steingold  <sds@loiso>
+
+	* fileio.lisp (file-header-alist):
+	added (requires SPLIT-SEQ from "string")
+
+	* tests.lisp (test-string): test SPLIT-SEQ
+
+	* string.lisp (split-seq): fix :end handling
+
+2006-12-20  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (plot-functions): quote title
+
+2006-12-07  Sam Steingold  <sds@loiso>
+
+	* data.lisp (table-p): export
+
+2006-11-30  Sam Steingold  <sds@loiso>
+
+	* ocaml.lisp (def-sexp-to): tweak
+
+2006-11-29  Sam Steingold  <sds@loiso>
+
+	* ocaml.lisp: export DEF-SEXP-TO and FIX-SLOT
+	(def-sexp-to): use MAKE-INSTANCE instead of CLISP/structure-specifics
+
+2006-11-28  Sam Steingold  <sds@loiso>
+
+	* ocaml.lisp (fix-slot): make non-consing
+
+	* ocaml.lisp: oops
+
+	* ocaml.lisp: added ocaml.lisp: Read Ocaml Sexp
+
+2006-11-14  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (plot-label): new structure
+	(make-plot): accept :LABELS
+
+2006-11-10  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp: implemented MULTIPLOT
+
+2006-11-09  Sam Steingold  <sds@loiso>
+
+	* data.lisp (plot-columns): pass ranges to PLOT-LISTS-ARG
+
+2006-11-08  Sam Steingold  <sds@loiso>
+
+	* data.lisp (plot-columns): accept :by
+
+2006-09-20  Sam Steingold  <sds@loiso>
+
+	* math.lisp (mdl-mi$, mdl-ma$): export
+
+	* log.lisp (fmt%): new function
+
+2006-09-14  Sam Steingold  <sds@loiso>
+
+	* data.lisp (columns-complement, list->intervals, extract-columns):
+	added
+	(unroll-column-specs): use COLUMNS-COMPLEMENT
+	(table-select): :COLUMN and :VALUE are now keyword arguments,
+	also accept :PREDICATE and :TITLE
+	(purge-columns): new exported function
+
+	* miscprint.lisp (print-counts): accept :TEST and pass it to COUNT-ALL
+
+2006-09-09  Sam Steingold  <sds@loiso>
+
+	* fileio.lisp (skip-search-or): added
+	(skip-search): return also pos
+
+	* data.lisp (*levels*): fixed type
+
+2006-08-29  Sam Steingold  <sds@loiso>
+
+	* autoload.lisp, data.lisp: provide :cllib-*
+
+2006-08-26  Sam Steingold  <sds@loiso>
+
+	* data.lisp (table-to-hash): added
+	(summarize): use it
+	(write-table): export
+
+	* log.lisp (mesg): bind *PRINT-PRETTY* to NIL to avoid line breaks
+
+2006-08-25  Sam Steingold  <sds@loiso>
+
+	* stat.lisp (histogram):
+	fold KEY between MIN and MAX to avoid LOG errors; use WITH-TIMING
+
+	* data.lisp: no need for CLLIB: package prefix
+
+2006-08-24  Sam Steingold  <sds@loiso>
+
+	* data.lisp (summarize, table-select): add the return value to *TABLES*
+
+	* data.lisp:
+	(*levels*, ensure-levels, write-table, maybe-ensure-table-stat-column)
+	(restat-table, summarize, table-select): added
+	(stat-column): added LEVELS
+	(show-sc): print LEVELS
+	(ensure-buckets): get LINES from SC-TABLE
+	(print-object@table): use WRITE-TABLE
+	(analyse-csv): accept :MEDIANS and :LEVELS
+	(table-stats-refresh): also updated LEVELS
+	(coerce-int-float): added
+	(add-column): use it
+	(column-name-sc): use MAYBE-ENSURE-TABLE-STAT-COLUMN
+	in case the column is not numeric
+
+	* gnuplot.lisp (plot-term):
+	removed ORIENTATION, FONT-FAMILY, FONT-SIZE:
+	these are terminal-specific options
+	(plot-output): updated for the above change
+	(ps-terminal): set ORIENTATION, FONT-FAMILY, FONT-SIZE in TERMINAL-OPTIONS
+	(*plot-term-screen*): set FONT-FAMILY, FONT-SIZE in TERMINAL-OPTIONS
+	(*plot-term-printer*, *plot-term-file*): use PS-TERMINAL
+	(plot-output, plot-dated-lists, plot-lists, plot-lists-arg, plot-error-bars)
+	(plot-functions, plot-line-str): use ~S instead of "~A" for proper quoting
+
+	* tests.lisp (test-string): test REMOVE-SUBSEQ
+
+	* string.lisp (remove-subseq): added
+	(*string-junk*): export
+	(sequence-type): handle vectors better
+
+	* url.lisp (*browsers*):
+	added :FIREFOX-*, :*0-TAB, replaced :*-REMOTE with :*-WINDOW
+
+2006-08-20  Sam Steingold  <sds@loiso>
+
+	* data.lisp (*value-boundary*, table-accessor): added
+	(numeric): use *VALUE-BOUNDARY* instead of *NUM-TOLERANCE*
+	(strings-to-nums, analyse-csv): accept :VALUE-BOUNDARY
+
+	* data.lisp (strings-to-nums): tweak warning message
+
+	* data.lisp (analyse-csv, table-stats-refresh):
+	fixed TABLE-STAT-COLUMN calls
+
+2006-08-18  Sam Steingold  <sds@loiso>
+
+	* data.lisp (table-stat-column, ensure-table-stat-column, table-column-pos):
+	added
+	(analyse-csv, table-stats-refresh): use TABLE-STAT-COLUMN
+	(column-name-sc): use ENSURE-TABLE-STAT-COLUMN
+
+	* math.lisp: dispersion -> variance
+
+2006-08-17  Sam Steingold  <sds@loiso>
+
+	* data.lisp (column-name-sc): added
+	(plot-columns): use it
+
+2006-08-16  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (internal-with-plot-stream): bind *PRINT-PRETTY* to NIL
+	to avoid unwanted newlines in commands
+
+	* data.lisp (ensure-buckets, show-sc, show-sc-list): added
+	(strings-to-nums): pass :COUNT, :PROGRESS and :PROGRESS-1 to WITH-TIMING
+	(stat-column): accept keyword :BUCKETS instead of a positional argument
+
+	* csv.lisp (with-csv): pass :PROGRESS and :PROGRESS-1 to WITH-TIMING
+
+	* log.lisp (with-timing): accept :PROGRESS and :PROGRESS-1
+
+	* lift.lisp (bucketize): no need for LIFT: package prefix
+
+2006-08-12  Sam Steingold  <sds@loiso>
+
+	* data.lisp (table-lines$): export
+
+2006-08-05  Sam Steingold  <sds@loiso>
+
+	* data.lisp, gnuplot.lisp: indentation
+
+2006-08-04  Sam Steingold  <sds@loiso>
+
+	* data.lisp (stat-column): use LIFT:BUCKETIZE, do not accept :LEN
+
+	* lift.lisp (show-buckets, bucketize): added
+
+	* gnuplot.lisp (*gnuplot-dribble*): new option
+	(internal-with-plot-stream): accept :DRIBBLE
+	(plot-axis): range defaults to (* . *) and is always a CONS
+	(plot-output@plot-axis): updated
+	(make-plot): :XB :XE :YB :YE default to *
+
+2006-08-02  Sam Steingold  <sds@loiso>
+
+	* stat.lisp (histogram): accept :LOGSCALE, :MIN, :MAX
+
+	* gnuplot.lisp (plot-histogram): accept :XLOGSCALE, :MIN, :MAX
+
+	* data.lisp (table): new defstruct
+	(table-stats-refresh, column-histogram, add-column, plot-columns): added
+
+2006-07-26  Sam Steingold  <sds@loiso>
+
+	* data.lisp (stat-column):
+	new struct, returned by the eponymous function
+
+	* gnuplot.lisp (plot-timestamp): add LOC (top/bot) and ROT (rotate)
+	(plot-output@plot-timestamp): updated
+	(make-plot): :timestamp defaults to +PLOT-TIMESTAMP+
+
+2006-07-14  Sam Steingold  <sds@loiso>
+
+	* data.lisp (analyse-csv): FIRST-LINE-NAMES defaults to :DEFAULT
+
+2006-07-13  Sam Steingold  <sds@loiso>
+
+	* csv.lisp (with-csv):
+	FIRST-LINE-NAMES defaults :DEFAULT which means detect
+
+	* data.lisp (strings-to-nums): print drop summary
+	(analyse-csv): return names
+
+	* csv.lisp (csv-names, uncomment-line, +comments+): added
+	(with-csv): use `uncomment-line'
+
+2006-07-12  Sam Steingold  <sds@loiso>
+
+	* data.lisp (*min-name-length*): new variable
+	(stat-column, analyse-csv): better formatting
+
+	* data.lisp (column-spec-list): disallow symbols as names
+	(unroll-column-specs): fix "exclude" clause
+
+	* data.lisp (column-spec-list): extracted from `unroll-column-specs'
+	(unroll-column-specs): use it; allow (not (list)) to specify excluded columns
+
+	* data.lisp (*buckets*, *columns*): fixed type specs
+
+	* data.lisp (numeric): accept optional `names'
+
+2006-07-11  Sam Steingold  <sds@loiso>
+
+	* data.lisp (numeric):
+	also check that the number is within (/ *num-tolerance*)
+	(strings-to-nums): use numeric
+
+	* lift.lisp: provide :cllib-lift (not :lift)
+
+2006-07-10  Sam Steingold  <sds@loiso>
+
+	* data.lisp (evaluate-predictor): added
+
+	* data.lisp (analyse-csv): also accept :BUCKETS
+
+	* lift.lisp: allow buckets with exclusive boundaries
+	(bucket): new slots BEGF and ENDF
+	(bucket-inside-p, check-bucket, merge-buckets): use them
+	(print-object@bucket): new method
+	(buckets-overlap-p, bucket-empty, bucket-empty-p, fill-buckets): added
+
+2006-07-07  Sam Steingold  <sds@loiso>
+
+	* data.lisp (analyse-csv): filename in xlabel
+
+	* data.lisp: Data Analysis and Visualization
+
+	* gnuplot.lisp (plot-histogram): :title defaults to mdl
+
+	* csv.lisp (with-csv):
+	accept :first-line-names instead of :skip-first-line;
+	return vector of names
+	(csv-read-file): accept :first-line-names
+
+	* stat.lisp (histogram): allow pre-computed mdl
+
+	* gnuplot.lisp (plot-histogram): allow pre-computed mdl
+
+2006-06-30  Sam Steingold  <sds@loiso>
+
+	* math.lisp (ruler): documented the connection to ffs
+
+2006-06-28  Sam Steingold  <sds@loiso>
+
+	* math.lisp (sample): fixed the algorithm
+
+2006-06-22  Sam Steingold  <sds@loiso>
+
+	* matrix.lisp: (c) year
+
+	* tests.lisp (test-iter):
+	IDX in DO-ITER is a SIMPLE-ARRAY, not a VECTOR
+
+	* matrix.lisp (array-marginal): IDX is a SIMPLE-ARRAY, not a VECTOR
+
+2006-04-21  Sam Steingold  <sds@loiso>
+
+	* lift.lisp (defpackage :lift):
+	the default :use argument is implementation-dependent!
+
+2006-04-07  Sam Steingold  <sds@loiso>
+
+	* autoload.lisp (*autoload-defun*):
+	quote the defun to preserve #+clisp and formatting
+
+	* tests.lisp: test list.lisp
+
+	* list.lisp (jumps, count-jumps): fixed
+
+	* lift.lisp (prune-bucket-list): new function
+
+2006-03-09  Sam Steingold  <sds@loiso>
+
+	* base64.lisp, csv.lisp: updated (c)year
+
+2006-03-06  Sam Steingold  <sds@loiso>
+
+	* date.lisp (string->dttm): accept :start and :end
+
+	* date.lisp (string->dttm, infer-month): use position-limit
+
+	* string.lisp (position-limit): new function
+
+	* date.lisp (string->dttm):
+	handle strings with milliseconds separated with #\|
+
+2006-02-05  Sam Steingold  <sds@loiso>
+
+	* date.lisp (print-object@date):
+	print date as #d(ye mo da) when *print-escape*
+	(make-date-readtable): modified accordingly
+
+	* date.lisp (print-object@date): fix a typo
+
+2006-01-23  Sam Steingold  <sds@loiso>
+
+	* date.lisp (print-object@date):
+	use #d"" format when *print-escape* is non-NIL
+	(make-date-readtable): new function: read dates in #d"" format
+
+	* miscprint.lisp: (C)date
+
+	* miscprint.lisp (make-ht-readtable): return RT
+
+2006-01-03  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (plot-histogram): removed a spurious package prefix
+
+2005-12-12  Sam Steingold  <sds@loiso>
+
+	* cvs.lisp (cvs-change-root): doc: perl version
+
+2005-12-06  Sam Steingold  <sds@loiso>
+
+	* clhs.lisp (clhs-write-entity):
+	use `replaceable' for glossasry entries
+
+2005-12-05  Sam Steingold  <sds@loiso>
+
+	* inspect.lisp (inspect-frontend@:http): use UNWIND-PROTECT
+	to ensure that SOCK and SERVER are closed
+
+2005-11-23  Sam Steingold  <sds@loiso>
+
+	* url.lisp: url handles HTTP_PROXY and requires base64
+
+	* base64.lisp: (provide :cllib-base64)
+
+2005-11-22  Sam Steingold  <sds@loiso>
+
+	* clhs.lisp (clhs-write-entity, clhs-write-entities):
+	swap #\' with #\" in entities
+
+2005-09-22  Sam Steingold  <sds@loiso>
+
+	* math.lisp (kullback-leibler): new function
+
+	* math.lisp (*num-tolerance*): set to (SQRT DOUBLE-FLOAT-EPSILON)
+	(incomplete-gamma-continued-fraction, newton, integrate-simpson):
+	use APPROX=-ABS
+
+2005-09-02  Sam Steingold  <sds@loiso>
+
+	* xml.lisp (do-xmlo-data):
+	use XMLN= instead of STRING-EQUAL to compare node names
+
+2005-09-01  Sam Steingold  <sds@loiso>
+
+	* xml.lisp (do-xmlo-data): new macro
+
+	* xml.lisp (with-tag): new macro
+
+	* matrix.lisp (list-to-array): new function
+
+2005-08-15  Sam Steingold  <sds@loiso>
+
+	* matrix.lisp (array-dist): do not pass KEY to NORM-FUNCTIONS
+
+	* math.lisp (norm-functions): do not accept KEY
+	(norm): do not pass KEY to NORM-FUNCTIONS
+
+	* matrix.lisp (array-dist): export
+
+	* matrix.lisp (array-dist): use NORM-FUNCTIONS
+
+	* math.lisp (norm-functions): added
+	(norm): use it
+
+	* matrix.lisp, tests.lisp (array-marginal): handle unordered INDEX-LIST
+
+	* tests.lisp (test-matrix): test "total" slices and marginals
+
+	* tests.lisp (test-matrix): return ERROR-COUNT
+
+2005-08-12  Sam Steingold  <sds@loiso>
+
+	* tests.lisp (test-matrix): test ARRAY-MARGINAL
+
+	* matrix.lisp (array-marginal): added
+
+	* tests.lisp (test-matrix): test ARRAY-SLICE
+	(test-matrix-inverse): renamed from TEST-MATRIX
+
+	* matrix.lisp (array-slice): new function
+
+2005-07-28  Sam Steingold  <sds@loiso>
+
+	* stat.lisp (chi2-prob):
+	when DF>100, use CNDF-TAIL to avoid floating point underflow
+
+	* math.lisp (erfc, erfcx, cndf-tail): export
+
+2005-07-25  Sam Steingold  <sds@loiso>
+
+	* symb.lisp (symbol-copy): added
+
+2005-07-20  Sam Steingold  <sds@loiso>
+
+	* lift.lisp (bucket-midpoint): added
+	(bucket): accept any sequence of buckets
+
+2005-07-19  Sam Steingold  <sds@loiso>
+
+	* lift.lisp (bucket-inside-p, bucket-distance, bucket): new functions
+
+2005-07-14  Sam Steingold  <sds@loiso>
+
+	* math.lisp (binomial-mod2): new function
+
+2005-07-11  Sam Steingold  <sds@loiso>
+
+	* stat.lisp (chi2-1, chi2-2): renamed SEQ->SAMPLE
+
+2005-07-08  Sam Steingold  <sds@loiso>
+
+	* symb.lisp (symbol-append, re-intern): new functions
+
+2005-07-07  Sam Steingold  <sds@loiso>
+
+	* stat.lisp (chi2-prob):
+	return the probability that this CHI2/DF score is just a
+	random fluke (it returned the complement before)
+
+	* math.lisp (normalize): return the original norm as the second value
+
+2005-07-06  Sam Steingold  <sds@loiso>
+
+	* stat.lisp (check-distrib): new function
+	(chi2-1-ui): accept :SAMPLE-NAME and :DISTRIB-NAME
+	(chi2-2-ui): accept :SAMPLE1-NAME and :SAMPLE2-NAME
+
+	* stat.lisp (chi2-2): renamed from CHI2
+	(chi2-1, chi2-1-ui, chi2-2-ui): new functions
+
+2005-07-05  Sam Steingold  <sds@loiso>
+
+	* stat.lisp (chi2-prob): new function
+
+	* math.lisp (incomplete-gamma): new function
+	(*max-iterations*): new variable
+	(newton): use it
+
+	* gnuplot.lisp (plot-functions): progress indicator
+
+	* math.lisp (beta): Beta function = G(x)G(y)/G(x+y)
+
+	* math.lisp (log-gamma): log(gamma(x)), x>0; Numerical Recipes 6.1
+
+2005-07-01  Sam Steingold  <sds@loiso>
+
+	* stat.lisp (chi2): new function
+
+2005-06-30  Sam Steingold  <sds@loiso>
+
+	* math.lisp: (C) date
+
+	* math.lisp (norm, rel-dist, covariance, covariance1):
+	use SQR instead of EXPT
+
+	* math.lisp (draw): more permissive test for SUM=1
+
+	* math.lisp (draw): new function
+	(pick): accept a second (optional) argument
+
+2005-06-29  Sam Steingold  <sds@loiso>
+
+	* iter.lisp (maj2ind): rewrote to use an explicit DO loop (no consing)
+
+2005-06-28  Sam Steingold  <sds@loiso>
+
+	* iter.lisp: use keywords in LOOP
+
+	* tests.lisp: added a test for `do-iter-ls' and `do-iter'
+
+	* iter.lisp (maj2ind):
+	accept the 3rd argument to permit destructive updates
+	(do-iter-ls): reuse the same index list
+
+2005-06-27  Sam Steingold  <sds@loiso>
+
+	* lift.lisp: added lift.lisp
+
+2005-06-16  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp: (C) date update
+
+	* gnuplot.lisp (plot-histogram):
+	XLABEL and YLABEL must default to STRINGs
+
+2005-04-20  Sam Steingold  <sds@loiso>
+
+	* rng.lisp:
+	removed (type random-state *random-state*) declarations because of
+	http://www.lisp.org/HyperSpec/Body/sec_11-1-2-1-2.html item 11
+	Reported by Ram Bhamidipaty <ram@verisity.com>
+
+2005-03-30  Sam Steingold  <sds@loiso>
+
+	* string.lisp (edit-distance): accept :TEST
+
+	* string.lisp (edit-distance): new function
+
+2005-03-08  Sam Steingold  <sds@loiso>
+
+	* rng.lisp: export the interface functions
+
+	* rng.lisp: use #+(or) instead of #+nil for portability
+
+	* rng.lisp: STATE argument is always optional and binds *RANDOM-STATE*
+
+	* math.lisp (sample): new function
+
+	* csv.lisp (with-csv): accept :JUNK-ALLOWED to permit blank lines
+
+2005-03-02  Sam Steingold  <sds@loiso>
+
+	* tests.lisp (test-xml): cl-ent now has 1604 entities
+
+2005-01-28  Sam Steingold  <sds@loiso>
+
+	* simple.lisp (count-all): when :WEIGHT is NIL, treat it as 1
+
+	* math.lisp (entropy-sequence): :WEIGHT defaults to 1
+
+	* simple.lisp (count-all): WEIGHT can be either a function or a number
+
+2005-01-27  Sam Steingold  <sds@loiso>
+
+	* animals.lisp, autoload.lisp, base.lisp, card.lisp, check.lisp, clhs.lisp, closio.lisp, csv.lisp, cvs.lisp, date.lisp, datedl.lisp, fileio.lisp, fin.lisp, geo.lisp, getopt.lisp, gq.lisp, h2lisp.lisp, htmlgen.lisp, inspect.lisp, iter.lisp, laser.lisp, list.lisp, log.lisp, math.lisp, octave.lisp, prompt.lisp, rpm.lisp, server.lisp, sorted.lisp, string.lisp, tests.lisp, tilsla.lisp, url.lisp, withtype.lisp, xml.lisp:
+	updated (c)year
+
+	* date.lisp (date-next-year, date-next-month): call FIX-DATE
+
+	* date.lisp (date-da, date-mo, date-ye): export
+
+	* clhs.lisp: write issues list too
+	(clhs-version): new slot ISS-TAB
+	(*clhs-version-table*): init it
+	(*clhs-issues*, clhs-read-issues): added
+	(clhs-init): init *CLHS-ISSUES* using CLHS-READ-ISSUES
+	(clhs-write-entity): use XMLIZE-STRING
+	(clhs-write-entities): also write issues
+
+	* xml.lisp (xmlize-string): new function
+
+2005-01-26  Sam Steingold  <sds@loiso>
+
+	* url.lisp: use PORT: package prefix for SET-SOCKET-STREAM-FORMAT
+
+	* url.lisp (flush-http): "^M" terminates on all platforms
+
+	* url.lisp (url-get): use SET-SOCKET-STREAM-FORMAT
+
+	* url.lisp (socket-send, http-parse-header):
+	call FRESH-LINE before each output
+
+2005-01-13  Sam Steingold  <sds@loiso>
+
+	* inspect.lisp (inspect-frontend):
+	use (FORMAT "~&~S~%") instead of PRINT for :M & :E
+
+2004-12-30  Sam Steingold  <sds@loiso>
+
+	* prompt.lisp (package-short-name): updated for new CLISP
+
+2004-12-24  Sam Steingold  <sds@loiso>
+
+	* elisp.lisp (set-default):
+	use (SETF SYMBOL-VALUE) instead of the deprecated SET
+
+	* miscprint.lisp (print-counts): new function
+
+	* math.lisp, simple.lisp (count-all, find-duplicates):
+	moved from "math" to "simple"
+
+	* miscprint.lisp: comment
+
+	* miscprint.lisp: (c) update
+
+2004-12-23  Sam Steingold  <sds@loiso>
+
+	* matrix.lisp (matrix-to-file, matrix-from-file):
+	start log with a FRESH-LINE
+
+	* matrix.lisp (matrix-inverse):
+	replaced with the non-recursive garnet version
+
+	* matrix.lisp (matrix-solve-lup, matrix-lup): new exported functions
+	(permuted-aref, mx-row-pivots, mx-lu-sum): added
+	(matrix-solve-lower, matrix-solve-upper): use PERMUTED-AREF
+	(matrix-lu): use MX-LU-SUM
+
+	* matrix.lisp (array-check-return):
+	do not overwrite the existing array with 0
+	(matrix-multiply): init the return value with 0 when necessary
+
+	* matrix.lisp (matrix-print): start with a FRESH-LINE
+	(matrix-to-file, matrix-from-file, random-matrix): added
+
+	* tests.lisp (test-matrix): added a start and an end messages
+
+	* elisp.lisp: [cmu]: hacked defpackage is in PORT
+
+	* base.lisp: tweak defpackage/shadowing-import-from
+
+	* tests.lisp (test-all): test matrix by default
+
+	* base.lisp: move CMUCL defstruct hack to PORT
+
+2004-12-22  Sam Steingold  <sds@loiso>
+
+	* tests.lisp (test-matrix): new function
+
+	* symb.lisp (reset-package): new function
+
+	* symb.lisp (kill-symbol): new function
+
+2004-12-20  Sam Steingold  <sds@loiso>
+
+	* matrix.lisp: (c) 2004
+
+	* math.lisp (entropy-sequence): (DFLOAT TOT) to avoid mixing precisions
+
+2004-12-19  Sam Steingold  <sds@loiso>
+
+	* matrix.lisp (displace-to): removed
+	(array-copy, array-check-return, array-lin-comb, matrix-multiply):
+	use ROW-MAJOR-AREF instead of displaced arrays
+
+2004-12-18  Sam Steingold  <sds@loiso>
+
+	* matrix.lisp (displace-to): new function
+	(array-copy, array-check-return, array-lin-comb, matrix-multiply): use it
+
+	* matrix.lisp (array-check-return): zero out the return value
+
+	* matrix.lisp: use :BELOW instead of :TO (1- ...)
+
+2004-11-30  Sam Steingold  <sds@loiso>
+
+	* fileio.lisp (load-compile-maybe): use PORT:COMPILED-FILE-P
+	to recompile when the FASL file is invalid
+
+	* url.lisp (protocol-rfc): more URLs in doc
+
+2004-11-12  Sam Steingold  <sds@loiso>
+
+	* tests.lisp (test-xml): cl-ent now has 1208 entities
+
+	* card.lisp, cvs.lisp, date.lisp, datedl.lisp, geo.lisp, gnuplot.lisp, gq.lisp, inspect.lisp, math.lisp, rpm.lisp, url.lisp, xml.lisp:
+	[CMUCL]: do not wrap DEFSTRUCT in EVAL-WHEN
+
+	* elisp.lisp: (emacs-lisp) [CMUCL]: import CLLIB:DEFSTRUCT
+
+	* base.lisp: (defstruct) [CMUCL]: redefine to make externalizable
+
+	* tests.lisp (test-base64): print error count
+
+2004-11-11  Sam Steingold  <sds@loiso>
+
+	* base64.lisp, tests.lisp:
+	new file: base64.lisp for base64 encoding and decoding
+
+2004-11-10  Sam Steingold  <sds@loiso>
+
+	* htmlgen.lisp (with-html-output):
+	make sure the tag attributes are quoted
+
+2004-11-09  Sam Steingold  <sds@loiso>
+
+	* htmlgen.lisp (crlf): use WRITE-STRING instead of two WRITE-CHARs
+
+	* url.lisp (*rfc-base*): updated the init value
+	(protocol-rfc): avoid self-modifying code
+
+	* log.lisp (time-diff): values of LINEAR in ETA are not integer!
+
+	* url.lisp (ftp-get-file): fixed a declaration
+
+	* rpm.lisp (rpm-get-new-rpms): fixed a declaration
+
+	* cvs.lisp (cvs-diff2patch): fixed FORMAT calls
+
+	* gnuplot.lisp (plot-error-bars): fixed a FORMAT call
+
+	* url.lisp (socket-send): bind FIN inside the function
+
+2004-10-30  Sam Steingold  <sds@loiso>
+
+	* simple.lisp (set=): new function
+
+2004-10-28  Sam Steingold  <sds@loiso>
+
+	* log.lisp (list-format): added a link to CLHS
+
+2004-10-27  Sam Steingold  <sds@loiso>
+
+	* log.lisp (with-timing): variable name tweaks and code reorganization
+
+	* log.lisp (time-diff):
+	arguments are INTEGER, so convert to DOUBLE-FLOAT
+	INTERNAL-TIME-UNITS-PER-SECOND instead of the result
+
+2004-10-20  Sam Steingold  <sds@loiso>
+
+	* log.lisp (with-timing): declare ETA as IGNORABLE
+
+2004-10-18  Sam Steingold  <sds@loiso>
+
+	* url.lisp (*url-opening-time*): integer
+
+2004-10-03  Sam Steingold  <sds@loiso>
+
+	* csv.lisp (with-csv):
+	we do not know the number of columns of empty files
+
+2004-09-28  Sam Steingold  <sds@loiso>
+
+	* math.lisp (standard-deviation-weighted):
+	when TWT=1, return max/min counts
+
+	* math.lisp (standard-deviation-mdl):
+	do not call ENTROPY-SEQUENCE when MIN=MAX
+
+2004-09-26  Sam Steingold  <sds@loiso>
+
+	* fileio.lisp (read-from-file): return FILE-LENGTH as the second value
+
+2004-09-24  Sam Steingold  <sds@loiso>
+
+	* csv.lisp (with-csv): new argument :SKIP-FIRST-LINE
+
+2004-09-15  Sam Steingold  <sds@loiso>
+
+	* log.lisp (get-int-time): return the integer time
+
+2004-09-14  Sam Steingold  <sds@loiso>
+
+	* math.lisp (pick): new function
+
+2004-09-13  Sam Steingold  <sds@loiso>
+
+	* csv.lisp (with-csv): the LIMIT argument may evaluate to NIL
+
+	* log.lisp, math.lisp, rpm.lisp, url.lisp:
+	`get-int-time' replaces `get-float-time'
+
+2004-09-10  Sam Steingold  <sds@loiso>
+
+	* log.lisp (with-timing): use TIME-DIFF also when (= LAST-POS POS)
+
+2004-09-09  Sam Steingold  <sds@loiso>
+
+	* tests.lisp (*network-dependent-tests*): new parameter
+	(test-all): new keyword argument DISABLE-NETWORK-DEPENDENT-TESTS:
+	when the test is in *NETWORK-DEPENDENT-TESTS*, it can be suppressed
+
+	* csv.lisp (with-csv): always print ETA
+
+	* log.lisp: fixed a typo in the last patch
+
+	* log.lisp (with-timing/eta): return ETA, not the total time estimate
+
+	* tilsla.lisp: export *seconds-long-threshold*
+
+	* csv.lisp (with-csv):
+	print ETA when it is more than *SECONDS-LONG-THRESHOLD*
+
+	* log.lisp (time-diff): new function
+	(elapsed): use it
+	(with-timing): new local function ETA
+
+	* math.lisp, simple.lisp (below-p, linear):
+	moved from "math" to "simple"
+
+2004-09-03  Sam Steingold  <sds@loiso>
+
+	* fileio.lisp (dir-size): new function
+
+	* csv.lisp (*csv-progress-1*): new user variable
+	(with-csv): new arguments: LIMIT, PROGRESS-1, return 3 values
+	(csv-read-file): return 2 values (records, bytes)
+
+2004-08-30  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (plot-output): fixed a TYPECASE clause
+	From Russell McManus <russell.mcmanus@morganstanley.com>
+
+2004-08-17  Sam Steingold  <sds@loiso>
+
+	* fileio.lisp (write-to-file): keep backups
+
+2004-08-11  Sam Steingold  <sds@loiso>
+
+	* simple.lisp (ensure): new macro
+
+2004-07-30  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (*gnuplot-printer*): reset to a B/W printed
+	(ps-terminal): do not set TERMINAL-OPTIONS
+	(make-plot-stream/:plot): simplified
+
+	* stat.lisp (histogram): fixed WIDTH
+
+	* math.lisp (min+max): new exported macro
+	(standard-deviation, standard-deviation-weighted): use it
+
+	* gnuplot.lisp (plot-histogram): use HISTOGRAM
+
+	* stat.lisp (histogram): new function
+
+	* fileio.lisp (pr): create and delete the tmp package every time
+
+	* math.lisp: (standard-deviation, standard-deviation-weighted):
+	also return the number of times MIN/MAX were reached
+	(mdl): new slots: MI$ and MA$
+
+2004-07-29  Sam Steingold  <sds@loiso>
+
+	* math.lisp: use `covariance' instead of `covariation'
+
+2004-07-27  Sam Steingold  <sds@loiso>
+
+	* fileio.lisp (pr): bind *PACKAGE* to force package prefixes
+
+2004-07-19  Sam Steingold  <sds@loiso>
+
+	* tests.lisp (test-xml): *xml-ent-file* now has 284 entities
+
+2004-07-16  Sam Steingold  <sds@loiso>
+
+	* math.lisp (normalizer-table): FUNCTIONs can be a list of symbols,
+	not just list of lists of symbols
+
+	* tests.lisp (test-xml): cl-ent now has 1183 entities
+
+	* gnuplot.lisp (plot-term): TARGET can be a symbol
+
+	* xml.lisp (xml-read-entity): support remote entities
+
+	* url.lisp (url-string-p): new function
+
+	* url.lisp (path-absolute-p): new function
+	(print-object, url/string): use it
+
+	* xml.lisp (read-xml): handle <![CDATA[...]]>
+	Reported by Lars Magne Ingebrigtsen <larsi@gnus.org>
+
+2004-07-15  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (+plot-term-screen+, +plot-term-printer+, +plot-term-file+):
+	renamed to
+	(*plot-term-screen*, *plot-term-printer*, *plot-term-file*): new variables
+	(plot-term): separated ORIENTATION, FONT-FAMILY, FONT-SIZE
+	from TERMINAL-OPTIONS which is now a LIST
+	(plot-output/plot-term): updated
+	(plot-output/plot-axis): disable axis label when it is NIL
+	(plot-spec): new slot MULTIPLOT
+	(plot-output/plot-spec): do not output TERM when MULTIPLOT is in effect
+	(make-plot): pass MULTIPLOT and TIMESTAMP to MAKE-PLOT-SPEC
+	(internal-with-plot-stream): do not print "Done" when MULTIPLOT is in effect
+	(plot-histogram): disable axis labels by default
+
+	* gnuplot.lisp (plot-histogram): optionally show mean
+	and mean+-standard deviation with vertical lines
+	(coordinate, point, arrow): new DEFSTRUCTs
+	(plot-output): plot them
+	(plot-spec): new slot ARROWS
+	(plot-output): plot ARROWS too
+	(make-plot): pass ARROWS to MAKE-PLOT-SPEC
+
+2004-07-14  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (plot-histogram): new function
+
+	* gnuplot.lisp: updated for gnuplot 4
+
+2004-07-12  Sam Steingold  <sds@loiso>
+
+	* simple.lisp (lexicographic-comparison):
+	fixed a bug with FIRST being a symbol
+
+2004-06-29  Sam Steingold  <sds@loiso>
+
+	* math.lisp (normalize-function-list):
+	check that all functions are in MDL-HT
+
+2004-06-28  Sam Steingold  <sds@loiso>
+
+	* simple.lisp (lexicographic-comparison): new macro
+
+	* math.lisp (normalizer-table, normalize-function-list): new functions
+
+2004-06-25  Sam Steingold  <sds@loiso>
+
+	* math.lisp (subsets): new function
+
+	* math.lisp (mdl-normalize-function): new function
+
+	* fileio.lisp (pr): do not downcase
+
+2004-06-17  Sam Steingold  <sds@loiso>
+
+	* miscprint.lisp (pophash): new function
+
+	* fileio.lisp (pr):
+	do not pass :CIRCLE to WRITE because it is overridden
+	by *PRINT-READABLY* binding in WITH-STANDARD-IO-SYNTAX
+
+2004-06-15  Sam Steingold  <sds@loiso>
+
+	* fileio.lisp (write-to-file): FRESH-LINE
+
+2004-06-07  Sam Steingold  <sds@loiso>
+
+	* tests.lisp: Munkres' Assignment Algorithm (AKA "Hungarian Algorithm")
+
+2004-05-25  Sam Steingold  <sds@loiso>
+
+	* math.lisp (triangle): new inline function
+
+2004-05-20  Sam Steingold  <sds@loiso>
+
+	* tests.lisp: disabled CVS test -- too slow!
+
+	* math.lisp (mdl-normalize, mdl-denormalize): new functions
+
+2004-05-18  Sam Steingold  <sds@loiso>
+
+	* rng.lisp: whitespace changes to help emacs
+
+2004-05-10  Sam Steingold  <sds@loiso>
+
+	* withtype.lisp (index-t): increased length to 28
+
+	* math.lisp (dot): relaxed the DOUBLE-FLOAT requirement
+
+	* math.lisp (standard-deviation-mdl):
+	ensure that MDL-SD and MDL-MN are DOUBLE-FLOATs
+
+	* math.lisp (entropy-sequence): ensure DOUBLE-FLOAT result
+
+2004-05-09  Sam Steingold  <sds@loiso>
+
+	* math.lisp:
+	(mean, mean-weighted, standard-deviation, standard-deviation-weighted)
+	(standard-deviation-relative, kurtosis-skewness, kurtosis-skewness-weighted)
+	(below-p, linear): relaxed DOUBLE-FLOAT constraint
+	(mean-cx): removed
+
+2004-05-08  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (plot-axis/logscale): fixed type
+
+2004-05-03  Sam Steingold  <sds@loiso>
+
+	* math.lisp (standard-deviation-weighted):
+	avoid an error when total weight is 1
+
+2004-04-16  Sam Steingold  <sds@loiso>
+
+	* math.lisp (find-duplicates, plf-integral): new functions
+
+2004-04-13  Sam Steingold  <sds@loiso>
+
+	* math.lisp: added piecewise linear functions
+	(plf): new structure
+	(plf-val, monotonic-p, plf-monotonic-p, plf->function, plf-size)
+	(remove-elements, plf-simplify, increasify, *increasify-step*): added
+
+	* fileio.lisp (read-from-file): accept FLOAT to override
+	the standard *READ-DEFAULT-FLOAT-FORMAT*
+
+2004-04-12  Sam Steingold  <sds@loiso>
+
+	* fileio.lisp (file-newer, file-newest): exported
+
+2004-04-09  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (make-plot): accept :YB and :YE arguments
+	(make-plot-stream): fixed STRING and PATHNAME directive handling
+	(plot-lists-arg): use :XB and :XE instead of :XBEG and :YBEG
+
+	* math.lisp (make-line): export
+
+	* math.lisp (information, mutual-information, dependency, proficiency, correlation):
+	added
+
+2004-04-05  Sam Steingold  <sds@loiso>
+
+	* math.lisp (count-all, entropy-sequence):
+	accept `weight' keyword argument
+	(mdl): new slot `en' for entropy
+	(standard-deviation-mdl): accept `discreet' keyword argument
+
+2004-03-29  Sam Steingold  <sds@loiso>
+
+	* closio.lisp (write-slots): new function
+	(print-object): use PPRINT-LOGICAL-BLOCK and WRITE-SLOTS
+
+	* math.lisp (count-all): added an :APPEND keyword argument
+
+	* prompt.lisp: fixed a typo - removed "ext:" prefix
+
+2004-03-23  Sam Steingold  <sds@loiso>
+
+	* miscprint.lisp (alist=): use `dolist' instead of `every'
+
+	* miscprint.lisp (plist=, alist=): new functions
+
+2004-03-19  Sam Steingold  <sds@loiso>
+
+	* log.lisp (with-timing): do not divide by elapsed time when it is 0
+
+2004-03-17  Sam Steingold  <sds@loiso>
+
+	* math.lisp (standard-deviation): return mean as min/max when len<2
+
+2004-03-04  Sam Steingold  <sds@loiso>
+
+	* math.lisp (standard-deviation-weighted): also compute MAX and MIN
+	(standard-deviation-mdl): accept the :WEIGHT keyword argument
+
+	* prompt.lisp: (package-short-name) [CLISP]: reuse EXT export
+
+2004-02-27  Sam Steingold  <sds@loiso>
+
+	* fileio.lisp (write-to-file, read-from-file):
+	pass `file-length' to `with-timing'
+	(read-from-file): new `package' argument
+
+	* log.lisp (with-timing):
+	new arguments: count & units (to report speed)
+
+2004-02-26  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp: added logscale plot-axis slot
+	handle win32 and unix identically: newer gnuplot works on win32 correctly
+
+	* tests.lisp (test-xml): cl-ent now has 1177 entities
+
+2003-12-10  Sam Steingold  <sds@loiso>
+
+	* math.lisp: typo
+
+	* math.lisp (ruler): new function
+
+2003-12-04  Sam Steingold  <sds@loiso>
+
+	* math.lisp (entropy-distribution, entropy-sequence, count-all):
+	new functions
+
+2003-10-19  Sam Steingold  <sds@loiso>
+
+	* fileio.lisp (file-cmp): new function
+	(file-equal-p): accept offset[12] a la cmp(1)
+
+2003-09-26  Sam Steingold  <sds@loiso>
+
+	* xml.lisp (xmln=): allow comparison XML-NAMEs with STRINGs
+	(print-object/xml-name): tweak
+
+2003-07-11  Sam Steingold  <sds@loiso>
+
+	* tests.lisp (test-all): allow selective testing
+
+	* matrix.lisp (matrix-print):
+	fixed colp and atp handling; better default format
+
+	* math.lisp (standard-deviation): compute also max and min
+	(mdl): added min and max
+	(standard-deviation-mdl): fill them
+
+2003-07-09  Sam Steingold  <sds@loiso>
+
+	* matrix.lisp (matrix-transpose): new function
+
+2003-07-07  Sam Steingold  <sds@loiso>
+
+	* math.lisp (binomial): loop: `:by -1' --> `:downfrom'
+
+	* card.lisp (+card-vcard-begin+, +card-vcard-end+): use defconst
+
+2003-07-01  Sam Steingold  <sds@loiso>
+
+	* csv.lisp (csv-print-vector): print values with :ESCAPE NIL
+
+	* base.lisp (mk-path): doc string spelling
+
+	* csv.lisp (csv-print-vector): use `*csv-separator*'
+
+	* csv.lisp (csv-read-file): autoload
+
+	* autoload.lisp: (autoload) [CLISP]: set SYS::FILE documentation
+	to avoid the function redefinition warning
+
+	* csv.lisp (csv-print-vector): omit missing values; TERPRI out
+
+2003-06-30  Sam Steingold  <sds@loiso>
+
+	* csv.lisp: require :cllib-*
+
+	* csv.lisp: provide :cllib-csv
+
+	* csv.lisp: new file csv.lisp: read/write comma-separated values
+
+2003-06-10  Sam Steingold  <sds@loiso>
+
+	* rpm.lisp (rpm-error): new condition
+	(del-file, rpm-file): new functions
+	(rpm-get-list): use them
+	(short-string-to-rpm): permit spaces for RPM-PATH-VALID-P
+	(rpm/pathname): when the path is for apt-get, do not even try
+	parsing PATHNAME-NAME; when that fails, call RPM-PATH-VALID-P;
+	and if _that_ fails, offer to delete the file
+	(rpm=, rpm=<): new functions, complement RPM<
+	(rpm-clean-hdr): search directories recursively, use DEL-FILE
+	(rpm-clean-up): use &KEY instead of &OPTIONAL; remove duplicate RPMs;
+	return the list of all RPMs kept (as the 5th value)
+
+2003-06-07  Sam Steingold  <sds@loiso>
+
+	* sorted.lisp (binary-member): handle empty lists
+
+	* rpm.lisp (rpm-clean-hdr): new function
+	(rpm-clean-up): call it to remove the up2date *.hdr files
+
+2003-04-26  Sam Steingold  <sds@loiso>
+
+	* tests.lisp (test-xml): cl-ent now has 1164 entities
+
+2003-04-17  Sam Steingold  <sds@loiso>
+
+	* base.lisp (*datadir*, *mail-host-address*): USER-HOMEDIR-PATHNAME and
+	MACHINE-INSTANCE may return NIL
+	Reported by JP Massar <massar@alum.mit.edu>
+
+2003-04-16  Sam Steingold  <sds@loiso>
+
+	* tests.lisp (test-elisp): bind *PACKAGE* for READ
+
+	* tests.lisp (test-xml): cl-ent now has 1163 entities (was 1160)
+
+2003-01-10  Sam Steingold  <sds@loiso>
+
+	* gq.lisp (update-quotes): do not pass :plot t to `plot-dated-lists'
+
+2003-01-08  Sam Steingold  <sds@loiso>
+
+	* fileio.lisp (file-equal-p): export
+
+	* tests.lisp (test-xml): fixed the number of CL entities
+
+	* fileio.lisp (file-equal-p): new function
+
+	* clhs.lisp (clhs-write-entity): '-'-->subt (sub is a standard entity)
+
+2003-01-03  Sam Steingold  <sds@loiso>
+
+	* url.lisp (url-get-news): removed an obsolete declaration
+
+	* url.lisp (url-ask):
+	typo: `*url-error*' is the stream, not `*url-errors*'
+
+2002-12-22  Sam Steingold  <sds@loiso>
+
+	* clhs.lisp (clhs-write-entity):
+	do not override the standard entities from
+	<http://www.w3.org/TR/WD-html40-970708/sgml/entities.html>
+
+2002-12-21  Sam Steingold  <sds@loiso>
+
+	* fileio.lisp (code-complexity):
+	the argument is now required and may be a stream
+
+2002-12-01  Sam Steingold  <sds@loiso>
+
+	* geo.lisp: fixed last patch
+
+2002-11-30  Sam Steingold  <sds@loiso>
+
+	* math.lisp: fixed last patch
+
+	* xml.lisp (xmlns-get): use REMOVE-PLIST instead of REMF
+
+	* url.lisp (url-ftp-get, finger): use REMOVE-PLIST instead of REMF
+
+	* math.lisp (volatility): use REMOVE-PLIST instead of REMF
+
+	* list.lisp (call-on-split): use REMOVE-PLIST instead of REMF
+
+	* htmlgen.lisp (with-http-output): use REMOVE-PLIST instead of REMF
+
+	* gnuplot.lisp:
+	(plot-dated-lists, plot-lists, plot-lists-arg, plot-error-bars):
+	 use REMOVE-PLIST instead of REMF
+
+	* geo.lisp (dump-find-country): use REMOVE-PLIST instead of REMF
+
+	* datedl.lisp (volatility-dl, standard-deviation-dl):
+	use REMOVE-PLIST instead of REMF
+
+2002-11-07  Sam Steingold  <sds@loiso>
+
+	* fin.lisp (mgg-payoff): new function
+
+2002-10-07  Sam Steingold  <sds@loiso>
+
+	* tests.lisp (test-xml): cl-ent now has 1157 entities
+
+2002-10-04  Sam Steingold  <sds@loiso>
+
+	* url.lisp (*url-user-agent*): new user variable (bug 617384)
+
+2002-09-24  Sam Steingold  <sds@loiso>
+
+	* html.lisp, rpm.lisp: updated for the changes in url.lisp
+
+	* url.lisp: (url) [struct]: removed GET-REQUEST-TYPE
+	(url-get-request): removed
+	(*url-output*, *url-error*): new user variables
+	(*url-caller*): new special var
+	(sleep-mesg): use *URL-ERROR* and *URL-SLEEP* instead of arguments
+	(open-socket-retry, open-url, with-open-url, socket-to-file)
+	(ftp-mdtm, ftp-get-file, url-ftp-get, url-send-mail, url-get-news)
+	(url-time, browse-url, dump-url, url-get): bind *URL-ERROR* &c
+	(socket-send): take a list of messages
+	(url-open-http): send the request in several lines
+	(http-parse-header): do not expect "OK"
+	(url-ask, ftp-get-passive-socket, url-login-ftp):
+	 use *URL-ERROR* instead of an explicit argument
+
+	* clhs.lisp: whitespace added to help Emacs font-lock comments
+
+	* doall.lisp: IN-PACKAGE must be before EXPORT
+
+2002-08-19  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (internal-with-plot-stream): correctly bind plot-file
+	based on the value of plot-stream
+
+	* datedl.lisp (mk-dl): export
+
+2002-08-14  Sam Steingold  <sds@loiso>
+
+	* xml.lisp (xml-print-readably-p):
+	do not check *PRINT-CIRCLE*: when there are
+	no circularities, CLISP will reset *PRINT-CIRCLE* to NIL internally
+	for speedup, thus breaking this code gratuitously
+
+2002-08-13  Sam Steingold  <sds@loiso>
+
+	* closio.lisp, cvs.lisp, date.lisp, datedl.lisp, geo.lisp, gq.lisp, inspect.lisp, math.lisp, rpm.lisp, url.lisp, xml.lisp:
+	CMUCL now supports defstruct/print-object (ANSI CL issue 116),
+	so `print-struct-object' is now gone
+
+	* tests.lisp (test-xml): there are 1151 entities in cl-ent.xml
+
+	* xml.lisp (xml-print-readably-p): disallow *xml-print-xml* :readably
+	unless *print-circle* is non-nil
+
+2002-08-07  Sam Steingold  <sds@loiso>
+
+	* gq.lisp (daily-data): added volume
+	(get-quotes-yahoo, get-quotes-xmltoday): get hgh/low/vol
+	(show-results): new function
+	(update-quotes): new keyword argument `tickers'
+
+2002-07-22  Sam Steingold  <sds@loiso>
+
+	* inspect.lisp: added a comment about overriding keep-alive
+
+	* htmlgen.lisp (with-html-output):
+	link/rev should be a string, not a symbol,
+	like all the other attribute values
+
+	* base.lisp (*user-mail-address*):
+	check win32-specific variable USERNAME too
+
+2002-07-18  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (%plotout): quote #\" when sending a string
+
+2002-07-16  Sam Steingold  <sds@loiso>
+
+	* math.lisp (binary-search): new function
+
+2002-06-20  Sam Steingold  <sds@loiso>
+
+	* rpm.lisp (rpm-available):
+	condition `path' has been renamed to `net-path' on 2001-12-04
+
+2002-06-17  Sam Steingold  <sds@loiso>
+
+	* cvs.lisp (cvs-stat-log):
+	use `probe-directory' instead of a check for /
+	Reported by Dave Fox <davef@xanalys.com>
+
+2002-05-31  Sam Steingold  <sds@loiso>
+
+	* clhs.lisp (clhs-write-entities):
+	call `clhs-init' when `*clhs-alist*' is nil
+
+2002-05-30  Sam Steingold  <sds@loiso>
+
+	* cvs.lisp: stat ChangeLog files
+
+2002-05-29  Sam Steingold  <sds@loiso>
+
+	* cvs.lisp (revision): new slot `state'
+	(cvs-read-change): initialize it
+	(cvsf-dead-p): new function
+	(cvs-stat-log): return the list of all `cvs-file' structures
+
+2002-05-20  Sam Steingold  <sds@loiso>
+
+	* date.lisp (*y2k-cut*): new custom variable
+	(fix-y2k): new function - fix the Y2K bug
+	(string->dttm): use it
+
+	* date.lisp (infer-timezone):
+	ignore non-numeric `minutes' instead of barfing
+
+2002-04-30  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (plot-term, make-plot-term): exported
+
+2002-04-25  Sam Steingold  <sds@loiso>
+
+	* inspect.lisp (*inspect-all*):
+	bind in INSPECT instead of using a global
+	variable since nested INSPECT sessions can interfere with
+	each other, each modifying the same *INSPECT-ALL*
+	(inspect-finalize): the default method now does nothing
+
+	* inspect.lisp (inspect-cllib):
+	keep the temp inspect package in a lexical
+	variable in addition to *PACKAGE* to avoid killing the wrong
+	package if *PACKAGE* was changed during the inspection
+
+2002-04-21  Sam Steingold  <sds@loiso>
+
+	* html.lisp: updated (C)
+
+	* html.lisp (dump-url-tokens, xml-read-from-url):
+	use *URL-MAX-RETRY* instead of
+	*URL-DEFAULT-MAX-RETRY* and *URL-TIMEOUT* instead of *URL-DEFAULT-TIMEOUT*
+
+	* clhs.lisp (*clhs-hashtable*): define before the first use
+
+	* rpm.lisp: use *URL-MAX-RETRY* instead of *URL-DEFAULT-MAX-RETRY*
+	and *URL-TIMEOUT* instead of *URL-DEFAULT-TIMEOUT*
+
+	* gq.lisp (with-url-xml):
+	use *URL-MAX-RETRY* instead of *URL-DEFAULT-MAX-RETRY*
+
+	* url.lisp (with-open-url):
+	use *URL-MAX-RETRY* instead of *URL-DEFAULT-MAX-RETRY*
+	and *URL-TIMEOUT* instead of *URL-DEFAULT-TIMEOUT*
+
+	* miscprint.lisp: use UNLOCK-PACKAGE and RESTORE-PACKAGE-LOCK around
+	(PRINT-OBJECT HASH-TABLE STREAM)
+
+	* closio.lisp: use UNLOCK-PACKAGE and RESTORE-PACKAGE-LOCK around
+	(PRINT-OBJECT STANDARD-OBJECT STREAM)
+
+2002-04-08  Sam Steingold  <sds@loiso>
+
+	* clhs.lisp: Dynamic symbol->file map
+	(+clhs-alist+): removed
+	(clhs-version): new defstruct
+	(*clhs-version-table*): new variable - list of known CLHS versions
+	(clhs-read-map): read the symbol->file map from a stream
+	(clhs-init): init `*clhs-alist*', `*clhs-hashtable*'
+	and `*clhs-version*' from `*clhs-root*'
+	(clhs-write-entity): reply on `*clhs-version*' for markup
+	(clhs-doc): call `clhs-init' when `*clhs-hashtable*' is nil
+
+	* url.lisp: updated the (C) years
+
+	* url.lisp: Handle both full and path-only GET requests
+	(url) [struct]: new slot `get-request-type'
+	(url) [converter]: file:/ URLs are local
+	(*url-default-sleep*): renamed to `*url-sleep*'
+	(*url-default-timeout*): renamed to `*url-timeout*'
+	(*url-default-max-retry*): renamed to `*url-max-retry*'
+	(open-socket-retry, url-get, ftp-get-file, url-ftp-get, ftp-list)
+	(url-get-news, dump-url): bind them instead of lexicals
+	(url-get-request): new function
+	(url-open-http): use it and set the `get-request-type' slot
+
+2002-04-03  Sam Steingold  <sds@loiso>
+
+	* url.lisp (*browsers*): added mozilla, links and
+	various `-remote' and `-xterm' variations
+
+	* url.lisp (flush-http): moved here from htmlgen.lisp;
+	made to work with CMUCL where #\Newline == #\Linefeed
+	(url-get-port): save the guess in to the port slot
+	(url-open-http): use the full URL in the GET request:
+	this might break older servers, but this is necessary
+	for proxies (like sourceforge);
+	the clean solution is obviously to try both in turn,
+	but I am too lazy now and the RFC 2616 HTTP/1.1
+	[<http://www.ietf.org/rfc/rfc2616.txt> or
+	 <http://www.w3.org/Protocols/rfc2616/rfc2616.html>]
+	specifies that this is the way of the future anyway
+	(url-get): flush the HTTP header and switch the http
+	socket to the binary mode (CLISP only, since ACL has
+	bivalent sockets anyway and CMUCL does not need this)
+
+	* htmlgen.lisp (flush-http): moved to url.lisp
+
+	* inspect.lisp: comment
+
+2002-03-30  Sam Steingold  <sds@loiso>
+
+	* url.lisp (socket-send/fin):
+	use #\Linefeed instead of #\Newline for full portability
+
+	* url.lisp (socket-send): new function: terminate lines with CRLF
+	(open-url, url-open-http, url-ask): use it
+
+2002-03-27  Sam Steingold  <sds@loiso>
+
+	* server.lisp (start-lisp-connection-listener):
+	fixed PORT:MAKE-PROCESS calls
+
+	* cvs.lisp (cvs-change-root): :external-format is CLISP-specific
+
+2002-03-24  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (plot-msg): removed
+	(internal-with-plot-stream): use `mesg' instead of `plot-msg'
+
+2002-03-18  Sam Steingold  <sds@loiso>
+
+	* elisp.lisp:
+	[CLISP]: *SOURCE-FILE-TYPES* is a list of strings, not pathnames
+
+2002-03-14  Sam Steingold  <sds@loiso>
+
+	* xml.lisp (xmlns-get): new option :out
+	(+xml-namespace-xml+, +xml-namespace-none+): init silently
+
+	* url.lisp (make-url): exported
+
+2002-03-11  Sam Steingold  <sds@loiso>
+
+	* url.lisp (url-send-mail): pass full address as RCPT TO
+
+2002-03-09  Sam Steingold  <sds@loiso>
+
+	* tests.lisp (test-url): added a mailto: test
+
+	* url.lisp (url): fixed last patch that broke mailto: URL parsing
+	(*url-replies*): added :conn = 220
+	(url-ask): barf when symbol END is not in *URL-REPLIES*
+
+2002-03-05  Sam Steingold  <sds@loiso>
+
+	* cvs.lisp (cvs-stat-log):
+	print a message before the second TOP-BOTTOM-UI call
+
+2002-03-02  Sam Steingold  <sds@loiso>
+
+	* sorted.lisp (top-bottom-ui):
+	support :KLABEL keyword arg for printing keys
+
+	* cvs.lisp (cvs-stat-log): print top 10 most frequently
+	 and top 10 most recently revised files
+
+	* sorted.lisp: doc string spelling
+
+2002-02-13  Sam Steingold  <sds@loiso>
+
+	* gq.lisp (get-quotes-yahoo, get-quotes-xmltoday):
+	reverse the list of daily-data
+
+2002-02-12  Sam Steingold  <sds@loiso>
+
+	* gq.lisp (get-quotes-xmltoday, get-quotes-yahoo): bind
+	 *READ-DEFAULT-FLOAT-FORMAT* to DOUBLE-FLOAT
+
+	* gq.lisp (with-url-xml):
+	do not bind *xml-read-balanced* and *xml-read-entities*
+	(date-mo/da/ye): new function
+	(get-quotes-yahoo): use the CSV service
+	(get-quotes-xmltoday): new function
+	(*get-quote-url-list*): new service "XMLToday"
+
+	* xml.lisp (xmln=):
+	new generic function to check XML names for equality
+	(xmlo-nm): extract the XML tag name as a string
+	(xmlo-tag): get the value of the name arg in the XML tag
+	(xmlo-name-check): ensure that the object has the given name
+	(xml-purge-data): ditch the whitespace from all data
+
+	* date.lisp (string-w3-datetime):
+	new function for parsing W3 datetim format
+	(string-w3-dttm): ditto, but encode time
+	(string->dttm): use it
+
+	* tests.lisp (test-date): test the w3 datetime format
+
+	* inspect.lisp (http-command): :external-format :dos is CLISP-specific
+
+2002-02-06  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (*gnuplot-path*): fixed doc and UNIX init value
+
+2002-01-26  Sam Steingold  <sds@loiso>
+
+	* card.lisp (time2string): removed (replaced with `dttm->string')
+	(card-print-as-bbdb, card-print-as-vcard, card-print-as-pretty):
+	 use `dttm->string' instead of `time2string'
+	(+card-vcard-begin+, +card-vcard-end+): new constants
+	(card-print-as-vcard, card-read-vcard): use them
+	(card-read-vcard): handle "REV:" and "CRE:"
+
+	* date.lisp: Handle <http://www.w3.org/TR/NOTE-datetime> time specs
+	(infer-timezone): accept a MINUTES optional arg for "+04:30" TZ
+	(date-formatter): two new formatters: :DATE and :DATETIME
+	(string->dttm): parse :DATETIME format
+
+	* fileio.lisp (read-list-from-stream):
+	accept a READ-AHEAD-FUNCTION keyword arg
+
+	* gq.lisp (hist-totl-comp):
+	need an OF-TYPE before a typespec on LispWorks
+	Reported by Kristoffer Kvello <krkvello@online.no>
+
+2002-01-16  Sam Steingold  <sds@loiso>
+
+	* inspect.lisp (http-command):
+	reconnect when a KEEP-ALIVE connection times out;
+	handle invalid requests (e.g., for favicon.ico) and ":"->"%3a"
+	[FIXME: disabled KEEP-ALIVE connections because it appears that
+	 content length in WITH-HTTP-OUTPUT is computed incorrectly]
+	(inspect-frontend) [http]: handle NIL ID returned by HTTP-COMMAND
+	due to an invalid request
+
+	* htmlgen.lisp: (close) [html-stream-out]: invoke CALL-NEXT-METHOD
+	(*with-html-output-doctype*): new user variable, defaults to XHTML
+	(with-html-output): use it
+	(with-http-output): new keyword args: RETURN-NAME and RETURN-CODE
+	(http-error): new function
+
+2002-01-07  Sam Steingold  <sds@loiso>
+
+	* gq.lisp (*hist-data-file*): export
+
+2001-12-07  Sam Steingold  <sds@loiso>
+
+	* card.lisp (*user-bbdb-file*, *user-vcard-file*, *user-native-file*):
+	use `mk-path'
+
+	* gq.lisp (*gq-log*): use `mk-path'
+
+	* cvs.lisp (cvs-change-root): use `mk-path'
+
+	* base.lisp (mk-path): new function for creating paths under a default
+	(*datadir*): use it
+
+2001-12-06  Sam Steingold  <sds@loiso>
+
+	* gq.lisp (*gq-log*, *hist-data-file*):
+	do not use #\/ in pathname strings
+
+	* base.lisp: oops
+
+	* base.lisp (*datadir*): do not use #\/ in pathname strings
+
+	* cvs.lisp (cvs-change-root): do not use #\/ in pathname strings
+
+	* card.lisp (*user-bbdb-file*, *user-vcard-file*, *user-native-file*):
+	pass
+	 :DEFAULTS NIL to MAKE-PATHNAME to avoid *DEFAULT-PATHNAME-DEFAULTS*
+
+2001-12-04  Sam Steingold  <sds@loiso>
+
+	* url.lisp (*nntp-server*): renamed from `*nntpserver*' and exported
+	(*url-replies*): exported
+	(*url-errors*): new user var, exported
+	(url): recognize <nttp:message-ID> URLs
+	(open-url, dump-url): bind `*nntp-server*' in the arglist
+	(open-url, url-get-news): handle <nttp:message-ID> URLs
+	(open-url, url-open-http, url-login-ftp): `path' error is now `net-path'
+	(url-ask): use `*url-errors*' to decide what error to signal
+	(dump-url): dumping an NNTP URL requires checking for ".", not just EOF
+
+2001-11-07  Sam Steingold  <sds@loiso>
+
+	* gq.lisp (update-quotes): pass `plot' to `plot-portfolio'
+
+	* gnuplot.lisp (plot-output/plot-term):
+	set output to file type depending on terminal
+	(plot-axis): new slot - `name' for gnuplot axis name
+	(plot-spec): init :name, not :label in *-axis
+	(plot-output/plot-axis): fixed accordingly
+	(make-plot): pass :name to `make-plot-axis'
+	(internal-with-plot-stream): init `plot-file' correctly
+
+	* xml.lisp (xml-list-to-alist):
+	tost: handle standalone characters (for malformed HTML)
+
+	* tests.lisp (test-xml):
+	there are 1096 entities in "clocc:etc;cl-ent.xml" now
+
+2001-11-04  Sam Steingold  <sds@loiso>
+
+	* rng.lisp (gen-exponential-variate-ziggurat):
+	density has to accept 0d0 too
+
+2001-11-02  Sam Steingold  <sds@loiso>
+
+	* animals.lisp, autoload.lisp, base.lisp, card.lisp, check.lisp, clhs.lisp, closio.lisp, cvs.lisp, date.lisp, datedl.lisp, doall.lisp, elisp.lisp, fileio.lisp, fin.lisp, geo.lisp, getopt.lisp, gnuplot.lisp, gq.lisp, h2lisp.lisp, html.lisp, htmlgen.lisp, inspect.lisp, iter.lisp, laser.lisp, list.lisp, log.lisp, math.lisp, matrix.lisp, miscprint.lisp, octave.lisp, prompt.lisp, rng.lisp, rpm.lisp, server.lisp, simple.lisp, sorted.lisp, stat.lisp, string.lisp, symb.lisp, tests.lisp, tilsla.lisp, url.lisp, withtype.lisp, xml.lisp:
+	prefix module names with `cllib-'
+
+2001-10-27  Sam Steingold  <sds@loiso>
+
+	* clhs.lisp (clhs-write-entities): write <?xml?>
+
+2001-10-11  Sam Steingold  <sds@loiso>
+
+	* elisp.lisp (emacs-lisp): package uses port too
+	(el::defalias): turn into a function
+	(defun-face): new macro
+	(el::define-key, el::make-sparse-keymap, el::substitute-key-definition)
+	(el::interactive, el::make-help-screen, el::help-for-help)
+	(el::start-kbd-macro, el::substitute-command-keys): use it
+	(el::display-color-p, el::propertize, el::make-mode-line-mouse-map):
+	 new fake defuns
+	(el::emacs-home, el::site-lisp-dir): new vars
+	(el::load-path): use them, do not list subdirs
+	(locate-file): look into the subdirs too
+
+2001-10-05  Sam Steingold  <sds@loiso>
+
+	* xml.lisp (print-object xml-misc): added XML printing style
+	(xml-size): also count the number of sub-elements
+	(xmlo-terpri-p): new function
+	(print-object xml-obj): use it
+	(read-xml): strip the last "?" from XML-DECL
+	(xml-xhtml-remove-unused-ids): new function
+	(xml-xhtml-tidy): new exported function
+
+2001-09-26  Sam Steingold  <sds@loiso>
+
+	* date.lisp (dttm->string): added &key dst
+
+	* date.lisp (infer-timezone): use `string->tz'
+	(dttm->string): generate TZ too
+	(date-formatter): two additional args: DST and TZ
+
+	* htmlgen.lisp, tests.lisp:
+	dttm->string now takes &key and not &optional arguments
+
+	* date.lisp (dttm->string): added keyword argument TZ (time zone)
+
+	* date.lisp (dttm->string): document that it is GMT
+
+2001-09-19  Sam Steingold  <sds@loiso>
+
+	* log.lisp (*print-log*): do not quote SIMPLE-VECTOR
+
+2001-09-10  Sam Steingold  <sds@loiso>
+
+	* url.lisp (url-p): exported
+
+2001-09-09  Sam Steingold  <sds@loiso>
+
+	* rpm.lisp (rpm-available): pass through `path' conditions
+
+	* url.lisp (url-open-http): signal a `path' error on 404&c
+	(open-url): pass through `path' conditions
+	(url-login-ftp): cwd errors generate `path' conditions
+
+2001-09-07  Sam Steingold  <sds@loiso>
+
+	* html.lisp (xml-read-from-url):
+	accept `max-retry' and `timeout' keyword arguments
+	for `with-open-url' and parse the http headers before reading XML
+
+	* url.lisp (http-parse-header): new function
+
+2001-09-06  rtoy  <rtoy@loiso>
+
+	* math.lisp:
+	Computation of continued fractions can sometimes overflow.  Rescale
+	the iteration once in a while.
+
+2001-09-06  Sam Steingold  <sds@loiso>
+
+	* html.lisp (xml-read-from-url): new function
+
+	* xml.lisp (xml-default-reset-entities): new function
+
+	* url.lisp (url-path-dir): typo
+
+2001-09-05  Sam Steingold  <sds@loiso>
+
+	* url.lisp (url-path-parse): new function
+	(url-path-dir, url-path-file, url-path-args): use it
+
+	* url.lisp: export URL struct slot accessors and manipulators
+
+	* tests.lisp (test-xml):
+	5 more entities have been added to "cl-ent.xml"
+
+	* gq.lisp (*print-log*): is now a simple vector
+
+	* xml.lisp (with-xml-file): pass `:type :xml' to `with-timing'
+
+	* log.lisp (*print-log*): simple vector now
+	(print-log-p): new function
+	(mesg): use it
+	(with-timing): take an additional keyword `type'
+
+	* xml.lisp (xml-init-entities): take an `out' keyword arg
+	(with-xml-file): pass `out' to `xml-init-entities'
+
+2001-08-31  rtoy  <rtoy@loiso>
+
+	* math.lisp:
+	o Replace cndf and erf with more accurate versions based on an
+	  implementation from calerf in TOMS 715.  Accurate for double-floats.
+	o Added erfc, erfcx, and cndf-tail functions.
+	o Added an implementation of erf and erfc based on continued
+	  fractions.  (Allowing accurate computation of these for
+	  long-floats.)
+
+2001-08-27  rtoy  <rtoy@loiso>
+
+	* rng.lisp:
+	o ZIGGURAT-INIT:  forgot to initialize x[0], fx[0], and fx[n].
+	  (Thanks to Clisp for catching this stupid error.)
+	o Make TIME-EXPO, TIME-GAUSSIAN work for non-CMUCL systems too.
+	o RNG-EXPO-HISTOGRAM should use PLOT-HIST-PDF.  Make it use m = 2, as
+	  a check that the generators work.
+
+	* rng.lisp:
+	o Change scaling in Ziggurat method for exponential variates because
+	  CMUCL on sparc doesn't convert (unsigned-byte 32) to floats very
+	  well.
+	o Add timing info for CMUCL sparc.  Ziggurat method is the fastest
+	  still.
+
+2001-08-26  rtoy  <rtoy@loiso>
+
+	* rng.lisp:
+	Add Marsaglia's Ziggurat method for generating exponential and
+	Gaussian variates.  Almost twice as fast as any of the others.
+
+2001-08-21  Sam Steingold  <sds@loiso>
+
+	* gq.lisp (get-quotes-yahoo): skip the initial junk
+
+2001-07-16  Sam Steingold  <sds@loiso>
+
+	* url.lisp (url-ask): ~? consumes two arguments
+	 Reported by Janne Rinta-Manty <rintaman@cs.Helsinki.FI>
+
+2001-07-03  Sam Steingold  <sds@loiso>
+
+	* gq.lisp (*get-quote-url-list*): SecAPL is dead
+
+	* url.lisp (url-get-port): Solaris does not have http in /etc/services
+
+2001-06-25  Sam Steingold  <sds@loiso>
+
+	* math.lisp (cndf):
+	comulative normal distribution function (renamed from erf)
+	(erf): changed to comply to the UNIX erf
+
+	* fin.lisp (black-scholes-call, black-scholes-eput):
+	use CNDF instead of ERF
+
+2001-06-24  Sam Steingold  <sds@loiso>
+
+	* math.lisp (erf):
+	comment: the same as cumulative normal distribution function
+
+2001-06-22  Sam Steingold  <sds@loiso>
+
+	* xml.lisp (make-xml-readtable): made #\| and #\* "single chars"
+	(read-xml): #\[ does not need `xml-list-to-alist'
+	 in <!DOCTYPE foo [...]>
+
+2001-06-11  Sam Steingold  <sds@loiso>
+
+	* url.lisp (dump-url): use NIL as EOF-value in READ-LINE
+
+	* geo.lisp (weather-report): use NIL as EOF-value in READ-LINE
+
+	* clhs.lisp (clhs-snarf-examples): use NIL as EOF-value in READ-LINE
+
+	* card.lisp (card-read-vcard): use NIL as EOF-value in READ-LINE
+
+2001-06-08  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp: (*gnuplot-printer*, *gnuplot-file*, all defstructs):
+	  eval always for CMUCL
+	(%plotout): new function, replaces FLET around some defmethods
+
+2001-05-23  Sam Steingold  <sds@loiso>
+
+	* cvs.lisp (cvs-change-root): new exported autoloaded function
+
+2001-05-17  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp: rewrote the backend in the object-oriented way
+
+	* gnuplot.lisp: intermediate
+
+2001-05-16  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp: (plot-data-style, plot-lists, plot-lists-arg):
+	 reduce/:key is better than apply+mapcar
+
+2001-05-10  Sam Steingold  <sds@loiso>
+
+	* fileio.lisp (load-compile-maybe): new keyword argument `:force'
+
+2001-05-07  Sam Steingold  <sds@loiso>
+
+	* cvs.lisp (cvs-stat-log): fresh-line before messages
+
+2001-05-04  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (internal-with-plot-stream/pp):
+	downcase symbols (Raymond Toy)
+
+2001-05-01  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (*gnuplot-default-directive*): new exported user option
+	(with-plot-stream, internal-with-plot-stream):
+	 PLOT is now an ordinary option; PLOT=T is deprecated
+	 PLOT can now be a stream or a pathname designator too
+
+2001-04-30  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (internal-with-plot-stream): output a `fresh-line'
+	 to `plot-str' during clean-up
+
+2001-04-27  Sam Steingold  <sds@loiso>
+
+	* math.lisp (product-from-to): comment fix
+
+2001-04-26  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (with-plot-stream):
+	check the length of `options' and call
+	 `internal-with-plot-stream' appropriately
+	(internal-with-plot-stream): new option - `border'
+
+	* gq.lisp (plot-portfolio): updated for the new `with-plot-stream'
+
+	* gnuplot.lisp (with-plot-stream): use `internal-with-plot-stream'
+	(internal-with-plot-stream): moved the bulk of
+	 `with-plot-stream' and `plot-header' here
+	 :data-style has to be a symbols, :legend - a list of symbols
+	(plot-header): removed
+
+	* xml.lisp: export xml-obj, xml-name, xml-namespace accessors
+
+	* gnuplot.lisp (with-plot-stream): do not call `apply' on `plot-header'
+
+2001-04-25  Sam Steingold  <sds@loiso>
+
+	* date.lisp (date-formatter): export
+
+2001-04-23  Sam Steingold  <sds@loiso>
+
+	* xml.lisp: typos
+
+2001-04-22  Sam Steingold  <sds@loiso>
+
+	* date.lisp (date-formatter): added docs
+
+	* date.lisp (date-formatter): new method :mbox
+	 from Dave Pearson <davep@davep.org>
+
+2001-04-20  Sam Steingold  <sds@loiso>
+
+	* htmlgen.lisp (directory-index): use dttm->string :short
+
+	* tests.lisp (test-date): use dttm->string :short
+
+	* date.lisp (dttm->string): call `date-formatter'
+	(date-formatter): new generic function
+	 [suggested by Dave Pearson & Marco Antoniotti]
+
+	* fileio.lisp (file-newer): ignore errors in `file-write-date'
+
+	* rpm.lisp: do not read the test stuff at the end, ever
+
+2001-04-19  Sam Steingold  <sds@loiso>
+
+	* date.lisp (string->dttm): handle full week day names
+
+2001-04-18  Sam Steingold  <sds@loiso>
+
+	* date.lisp (infer-timezone): negate the numeric offset
+	Reported by Dave Pearson <davep@davep.org>
+
+2001-04-11  Sam Steingold  <sds@loiso>
+
+	* fileio.lisp, math.lisp, octave.lisp, prompt.lisp, rpm.lisp:
+	updated for CLISP #+LISP=CL
+
+2001-04-02  Sam Steingold  <sds@loiso>
+
+	* fileio.lisp (load-compile-maybe): new exported function
+
+	* animals.lisp (play-game): save the net at the end
+
+	* fileio.lisp (save-restore): doc fix
+
+	* animals.lisp (*animals-file-name*): export
+	(*animals-debug-output*): removed, use (mesg :animals) instead
+	(play-animals): use `save-restore' to save `*animals-data*' too
+
+	* autoload.lisp (autoload-stream): export the `autoload' symbol
+	(autoload-generate): export the symbol before calling `autoload'
+
+	* base.lisp (*datadir*, *mail-host-address*, *user-mail-address*):
+	exported
+
+2001-03-30  Sam Steingold  <sds@loiso>
+
+	* fileio.lisp (read-list-from-stream): new keyword argument `package'
+
+2001-03-29  Sam Steingold  <sds@loiso>
+
+	* card.lisp, cvs.lisp, gq.lisp:
+	respect the new calling conventions of `read-list-from-*'
+
+	* fileio.lisp (read-list-from-stream): use keyword arguments
+	 instead of optional/rest combination; added `readtable' arg
+	(read-list-from-file): take a single &rest arg and pass it to
+	 `read-list-from-stream'
+
+	* h2lisp.lisp (read-c-junk): do not handle ";,:*|"
+	(make-c-readtable): pass them to `read-standalone-char'
+
+	* html.lisp (read-html-markup): do not handle ";,:"
+	(make-html-readtable): pass them to `read-standalone-char'
+
+	* xml.lisp (read-standalone-char): new exported function
+	(read-xml): do not handle #\: and #\=
+	(make-xml-readtable): tass #\: and #\= to `read-standalone-char'
+
+	* rng.lisp:
+	(gen-exponential-variate-sa, gen-exponential-variate-algorithm-ma,
+	gen-exponential-variate-ea, gen-exponential-variate-ea-2):
+	 added ignore declaration to avoid warnings
+	(gen-std-laplacian-variate): use `gen-exponential-variate' (typo)
+	(gen-gaussian-variate-box-trig): avoid CLISP floating contagion warning
+
+2001-03-21  rtoy  <rtoy@loiso>
+
+	* rng.lisp:
+	o Verify algorithms and add comments about which ones work and which
+	  ones don't
+	o Add macros gen-<type>-variate to use the desired underlying
+	  generators.
+	o Fix gamma generators that were calling non-existent Gaussian and
+	  exponential variates.
+	o Some comment fixes.
+
+2001-03-20  Sam Steingold  <sds@loiso>
+
+	* xml.lisp (stream-length, xml-path): ACL `excl:file-simple-stream'
+	 braindamage is specific to version 6
+
+2001-03-19  rtoy  <rtoy@loiso>
+
+	* rng.lisp: o Updated with several new generators for exponential.
+	o Added and updated (but commented out) timing routines.
+	o Added simple histogram routines used for testing whether the
+	  generators work or not.  (Commented out).
+
+2001-03-15  Sam Steingold  <sds@loiso>
+
+	* rng.lisp: added provide, in-package and use `dfloat'
+
+2001-03-14  Sam Steingold  <sds@loiso>
+
+	* rng.lisp: initial checkin
+
+	* xml.lisp (read-xml): add the #\; at the end of the UNICODE chars
+	 handle entities which contain text instead of a tag
+
+2001-03-13  Sam Steingold  <sds@loiso>
+
+	* xml.lisp (read-xml): handle #\/ separately
+	(make-xml-readtable): pass #\/ to `read-xml'
+
+2001-02-07  Sam Steingold  <sds@loiso>
+
+	* inspect.lisp: typo
+
+	* inspect.lisp (*inspect-unbound-value*): new internal variable
+	(inspect-cllib): bind it
+	(inspect-backend): use it for unbound symbols and slots
+	(get-insp): call `insp-check' only when `insp' is non-NIL
+
+2001-02-06  Sam Steingold  <sds@loiso>
+
+	* base.lisp (defpackage "CLLIB"): use string!
+
+	* base.lisp (defpackage cllib): use strings instead of symbols
+
+2001-01-23  Sam Steingold  <sds@loiso>
+
+	* math.lisp (poly): use `reduce' instead of `loop'
+
+2001-01-08  Sam Steingold  <sds@loiso>
+
+	* xml.lisp: works with CMUCL 18c
+	(require :ext): for `required-argument'
+	(print-object xml-name): the default namespace is
+	 `+xml-namespace-none+', not `nil'
+	(xml-tag): `name' is required
+
+	* closio.lisp (read-object): `nil' in `case' has to be in ()
+
+2001-01-04  Sam Steingold  <sds@loiso>
+
+	* gq.lisp (update-quotes): new keyword arg `hist-file'
+
+2000-12-12  Sam Steingold  <sds@loiso>
+
+	* xml.lisp (xml-read-entity): better error message
+	(stream-length, xml-path): handle the ACL6 braindamage:
+	 `open' returns an `excl:file-simple-stream', not a `file-stream'
+
+2000-12-06  Sam Steingold  <sds@loiso>
+
+	* clhs.lisp (clhs-write-entity): added ";" after &lt and &gt
+
+2000-12-03  Sam Steingold  <sds@loiso>
+
+	* xml.lisp (xml-read-entity): do not modify data;
+	 somehow it is read-only on clisp (bug?)
+	(xml-print-readably-p): do not quote the list
+	(xmlns-get): `pushnew' instead of `push'
+	(print-object xml-name): use `write', not `princ'
+	(initialize-instance xml-stream-in): use `if', not `cond'
+	(xmlis-push): new function
+	(read-xml): use it
+	(xml-list-to-alist): delete comments from the argument
+	(xml-resolve-namespaces): replaced `recursive-p' with `recursion-depth'
+
+2000-11-20  Sam Steingold  <sds@loiso>
+
+	* gq.lisp (update-quotes): typo in features
+
+2000-11-16  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp, gq.lisp, octave.lisp:
+	Allegro uses feature :mswindows, not :win32
+
+2000-11-15  Sam Steingold  <sds@loiso>
+
+	* date.lisp (previous-working-day): `skip' defaults to 1, not -1
+
+2000-11-10  Sam Steingold  <sds@loiso>
+
+	* inspect.lisp (inspect-frontend): call `browse-url' regardless of
+	the value of `*inspect-browser*'
+
+	* url.lisp (*browser*): new user variable
+	(browse-url): use it as the default browser
+
+2000-11-09  Sam Steingold  <sds@loiso>
+
+	* inspect.lisp (print-inspection): added &rest argument
+	(http-command): get `keep-alive' too; use `flush-http'
+
+	* htmlgen.lisp, inspect.lisp: *** empty log message ***
+
+2000-11-08  Sam Steingold  <sds@loiso>
+
+	* inspect.lisp (http-command): use `flush-http'
+
+	* htmlgen.lisp (flush-http): new exported function
+
+	* htmlgen.lisp (with-http-output): typos
+
+	* inspect.lisp: use `with-http-output' instead of `with-html-output'
+
+	* htmlgen.lisp (with-http-output): new exported macro
+
+	* octave.lisp (flush-stream): removed
+
+2000-11-01  Sam Steingold  <sds@loiso>
+
+	* math.lisp (*primes*, *primes-file*): export
+
+2000-10-09  Sam Steingold  <sds@loiso>
+
+	* sorted.lisp (multi-union): new exported function
+
+2000-10-02  Sam Steingold  <sds@loiso>
+
+	* miscprint.lisp (print-all-ascii): added a doc string
+
+2000-09-29  Sam Steingold  <sds@loiso>
+
+	* math.lisp (permutation): new exported function, generates a specific
+	 permutation based on the Fisher/Yates algorithm
+	(with-permutations-shuffle): new exported macro,
+	 uses `permutation'
+	(make-vector-indexed): new helper function
+	(vector-shuffle, with-permutations-lex): use it
+	(permutations-list): added :shuffle method
+
+	* tests.lisp (test-math): new function (test permutations)
+	use `warn' instead of `format t' throughout
+
+2000-09-28  Sam Steingold  <sds@loiso>
+
+	* math.lisp (require :simple): for `with-collect'
+	(with-permutations-swap): new exported macro,
+	 implements algorithm 115 from CACM
+	(with-permutations-lex): new exported macro,
+	 implements algorithm 202 from CACM
+	(permutations-list): new exported function,
+	 returns all permutations of a vector
+	(check-permutations-end): new helper function
+
+2000-09-26  Sam Steingold  <sds@loiso>
+
+	* simple.lisp (filter): more comments
+
+2000-09-13  Sam Steingold  <sds@loiso>
+
+	* math.lisp (vector-shuffle): export
+
+2000-09-12  Sam Steingold  <sds@loiso>
+
+	* math.lisp (vector-shuffle): new function
+
+2000-09-07  Sam Steingold  <sds@loiso>
+
+	* cvs.lisp (cvs-diff2patch): added historical note
+
+2000-08-21  Sam Steingold  <sds@loiso>
+
+	* date.lisp: comment fix
+
+2000-08-19  Sam Steingold  <sds@loiso>
+
+	* closio.lisp (*closio-method*): new variable
+	(read-object, print-object): use it
+
+2000-08-16  Sam Steingold  <sds@loiso>
+
+	* date.lisp (working-day-p): new function
+
+	* cvs.lisp (cvs-stat-log): give cvs `-q' to muffle stderr
+
+	* date.lisp (today): export
+	(days-to-next-working-day): new function
+	(previous-working-day, next-working-day): use it
+	(*black-day-week*, *black-day-date*): new variables
+	(black-days): new function
+	(next-bad-day): removed, see `black-days'
+
+2000-08-14  Sam Steingold  <sds@loiso>
+
+	* closio.lisp (print-object):
+	need both `class-slot-initargs' and `class-slot-list'!
+
+	* closio.lisp (print-object):
+	suppress the warning from Allegro CL about
+	redefining a symbol in a locked package
+
+	* closio.lisp: require port:sys for `class-slot-initargs'
+	(print-object): use `class-slot-initargs', not `class-slot-list'
+
+2000-08-10  Sam Steingold  <sds@loiso>
+
+	* xml.lisp (xml-read-from-file): accept `out' keyword argument
+
+2000-08-07  Sam Steingold  <sds@loiso>
+
+	* xml.lisp (with-xml-file): evaluate `file' just once
+
+	* url.lisp (*browsers*):
+	`:netscape' is not -remote now; `:netscape-remote' is
+
+2000-07-25  Sam Steingold  <sds@loiso>
+
+	* url.lisp: use `mesg' pervasively
+	(ftp-mdtm): a new function to figure out mod time
+	(url-ftp-get): new keyword arg `timestamp'
+
+2000-07-24  Sam Steingold  <sds@loiso>
+
+	* url.lisp (*url-replies*): added `mdtm'
+	(url-login-ftp): don't `cwd' when there is no directory
+
+2000-07-20  Sam Steingold  <sds@loiso>
+
+	* inspect.lisp (inspect-frontend :http):
+	null `*inspect-browser*' means print URL.
+	This way you can run lisp and browser on different machines.
+
+	* inspect.lisp: more debugging statements
+
+2000-07-11  Sam Steingold  <sds@loiso>
+
+	* gq.lisp (navs=): new function
+	(gq-fix-hist, process-results): use it
+
+2000-06-29  Sam Steingold  <sds@loiso>
+
+	* gq.lisp (with-url-xml): bind `*xml-read-balanced*' and
+	 `*xml-read-entities*' outside of `with-xml-input'
+	(get-quotes): use (mesg :log) instead of (format t)
+
+	* gq.lisp: use XML parsing instead of HTML parsing
+	new backend - CNNFN
+	(*gq-timeout*): new variable
+	(with-url-xml): new macro
+	(get-url-xml-tokens): new autoloaded function
+	(stream-next-num, gq-dat, gq-next, gq-skip, gq-next-num): new functions
+	(get-quotes-apl, get-quotes-yahoo, get-quotes-pf): use `with-url-xml'
+	(get-quotes-cnn): new function
+	(*get-quote-url-list*): added CNN
+	(get-quotes): run all backends when `server' is T
+
+	* xml.lisp: better support for HTML parsing
+	require :net because of `socket' type
+	use (mesg :xml) instead of (format t)
+	(*xml-read-balanced*, *xml-read-entities*): new variables
+	(xml-print-readably-p): new function
+	(print-object): use it
+	(xml-push): added declarations; return the `xml-obj' arg
+	(stream-length): handle socket streams
+	(xml-read-text): guard against EOF
+	(xml-list-to-alist tost): handle marformed HTML
+	(xml-destructure-attributes): new function
+	(xml-read-tag, read-xml): use it
+	(read-xml): handle comments better
+	(make-xml-readtable): handle broken HTML
+	(with-xml-input): do not reuse `*xml-readtable*'
+	(xml-read-from-file): new argument `resolve-namespaces'
+
+	* log.lisp (*print-log*): added :xml
+
+	* geo.lisp (*census-gazetteer-url*): specify port
+
+2000-06-28  Sam Steingold  <sds@loiso>
+
+	* html.lisp (html-stream-in: stream-read-char, stream-read-char-no-hang,  stream-peek-char):
+	fixed the :eof stuff
+
+2000-06-26  Sam Steingold  <sds@loiso>
+
+	* xml.lisp (*xml-pre-namespaces*, *xml-uri-namespaces*):
+	eval-when for ACL
+
+2000-06-23  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp: fixed the Gnuplot homepage
+
+2000-06-16  Sam Steingold  <sds@loiso>
+
+	* xml.lisp (xml-misc): new struct for yet-unhandled objects
+	(xml-size): added `xmlt-size' flet
+	(xml-push): handle `xml-decl'
+	(xml-resolve-namespaces): handle `xml-decl'
+	(read-xml): create `xml-misc'
+
+2000-06-14  Sam Steingold  <sds@loiso>
+
+	* xml.lisp: major rewrite to better support XML namespaces
+	new structs: `xml-name', `xml-namespace', `xml-tag', `xml-decl'
+	(*xml-uri-namespaces*, *xml-pre-namespaces*): new variables
+	(+xml-namespace-xml+, +xml-namespace-none+): new constants
+	(xmlns-get, xmln-get, xmlns-print-all, xmlns-reset, xmln-prefix,
+	 xmlo-long-p, xml-list-to-alist, xml-resolve-namespaces): new functions
+	(xml-size): handle symbols, sequences and xml-names.
+	(xml-push, xml-read-tag): assert with `equal', not `eq'
+	(xml-obj-from-list, xml-list-to-namespaces): removed, replaced with
+	 `xml-list-to-alist' throughout the file
+	(make-xml-readtable): can modify a readtable argument
+	(xml-read-from-file): call `xml-resolve-namespaces';
+	 new keyword argument :repeat, passed to `read-from-stream'
+	 (therefore require :fileio)
+
+	* miscprint.lisp (print-hash-table): deleted
+	(make-ht-readtable): new function
+	(print-object hash-table): new method
+
+	* closio.lisp, h2lisp.lisp, html.lisp:
+	make-*-readtable can modify a readtable argument
+
+	* closio.lisp (print-object standard-object): use #[] only when
+	 `*print-readably*' is non-NIL
+
+2000-06-13  Sam Steingold  <sds@loiso>
+
+	* fileio.lisp (read-from-stream): new autoloaded exported function
+	(read-from-file): use it
+
+2000-06-12  Sam Steingold  <sds@loiso>
+
+	* miscprint.lisp (alist->plist, plist->alist): new functions
+
+2000-06-07  Sam Steingold  <sds@loiso>
+
+	* date.lisp:
+	under CMUCL, date depends on closio for `print-struct-object'
+
+2000-06-06  Sam Steingold  <sds@loiso>
+
+	* xml.lisp: Handle multiple namespaces properly
+	(print-object xml-obj): bind `*package*' to `*xml-pack*'
+	(xml-list-to-namespaces): new function
+	(xml-read-tag, read-xml): use it
+	(read-xml): handle #\:
+	(make-xml-readtable): set #\: to call read-xml
+
+	* xml.lisp (make-xml-readtable): treat #\' just like #\"
+
+	* cvs.lisp (cvs-read-file): handle deleted files
+
+	* miscprint.lisp (print-all-ascii, print-all-packages): autoload
+
+2000-06-02  Sam Steingold  <sds@loiso>
+
+	* xml.lisp (read-xml): read the extra #\; char
+
+	* cvs.lisp (cvs-stat-log): is the log file extsts, supersede it
+
+	* cvs.lisp (cvs-read-file): handle mixed stdout/stderr
+
+	* xml.lisp (*xml-print-xml*): export
+	(print-object xml-obj): print empty tags in the short form,
+	 when `*xml-print-xml*' is not `:sgml'
+	(xml-read-tag): handle tags for empty elements
+
+	* base.lisp: handle logical pathnames with extensions
+
+	* prompt.lisp (set-cllib-prompt): ignore `cmd-idx' under #+allegro
+
+	* xml.lisp (*xml-ent-file*): full path
+	(xml-de-uunicode): renemed to `xml-de-unicode'
+	(stream-length): handle lists and concatenated-streams
+	(initialize-instance :after xml-stream-in): use it
+	(stream-read-char-no-hang): revived for ACL
+	(with-xml-input): use `*xml-readtable*'
+	(with-xml-file): do not bind `*readtable*'
+	 (`with-xml-input' does this for us already)
+	(xml-read-from-file): autoload
+
+	* tests.lisp (test-xml): new function
+	(test-all): call it
+
+2000-05-31  Sam Steingold  <sds@loiso>
+
+	* tests.lisp (test-cvs): new function
+	(test-all): call it
+
+	* cvs.lisp (pathname-ensure-name): moved to port:sys
+
+	* autoload.lisp (*autoload-cookie*): export
+	(autoload-generate): minor format tweak
+
+2000-05-24  Sam Steingold  <sds@loiso>
+
+	* cvs.lisp: compute file sizes too
+	(cvs-stat-log): handle directories
+
+	* geo.lisp, gq.lisp, inspect.lisp, xml.lisp:
+	fixed struct printing for CMUCL
+
+	* inspect.lisp: export `*inspect-browser*'
+
+2000-05-23  Sam Steingold  <sds@loiso>
+
+	* cvs.lisp (cvs-diff2patch): `fmakunbound' for autoload
+
+	* card.lisp: comment
+
+	* cvs.lisp: typo
+
+	* cvs.lisp: CVS log and diff
+
+	* tests.lisp (test-date): test cvs-style date (yyyy/mm/dd hh:mm:ss)
+
+	* fileio.lisp (skip-to-line): do not compute (length ln) twice
+
+	* elisp.lisp (emacs-lisp): shadow `autoload'
+
+2000-05-22  Sam Steingold  <sds@loiso>
+
+	* prompt.lisp (set-cllib-prompt):
+	new function, call it to set the prompt.
+	Loading this file does not change the prompt annymore.
+
+	* animals.lisp, h2lisp.lisp, list.lisp, rpm.lisp: whitespace
+
+	* inspect.lisp (inspect-frontend :http):
+	always `browse-url' to 127.0.0.1
+
+	* animals.lisp (node): surround with `eval-when' to avoid ACL warning
+
+	* autoload.lisp (autoload-generate): save the implementation name too
+	(*autoload-cookie*): new variable
+	(autoload-stream): use it
+
+2000-05-19  Sam Steingold  <sds@loiso>
+
+	* closio.lisp (macroexpand-r): added the `autoload' cookie
+
+	* symb.lisp (kwd, keyword-concat): fixed declarations
+
+	* log.lisp (with-timing): new gensym %out to avoid multiple evaluation
+
+	* tests.lisp (test-url): use `make-url' instead of #S(url)
+	(test-elisp): handle CMUCL read errors
+
+	* htmlgen.lisp (with-html-output):
+	do not generate footer code when footer is NIL
+
+2000-05-19  rtoy  <rtoy@loiso>
+
+	* symb.lisp:
+	kwd is declared to return exactly one value.  Make it so.  (Cleans up
+	some warnings from CMUCL.)
+
+2000-05-18  Sam Steingold  <sds@loiso>
+
+	* inspect.lisp: more doc strings
+
+	* miscprint.lisp (print-all-ascii): `char-code-limit' is not a valid
+	argument for `code-char'
+
+2000-05-16  Sam Steingold  <sds@loiso>
+
+	* tests.lisp: regression testing
+
+	* elisp.lisp (+elisp-pack+): new constant
+	(compile-el-file, el::load): bind `*package*' to `+elisp-pack+'
+
+	* animals.lisp, card.lisp, closio.lisp (*clos-readtable*):
+	renamed to +clos-readtable+ (const)
+
+	* elisp.lisp (emacs-lisp): use cllib, not cl-user
+
+	* inspect.lisp (print-inspection): do not ignore `backend'
+
+	* inspect.lisp (inspection): fixed type for `nth-slot'
+
+	* prompt.lisp: prompt for allegro: ignore `ib'
+
+2000-05-15  Sam Steingold  <sds@loiso>
+
+	* fin.lisp (mgg-compare): detailed doc
+
+	* check.lisp, datedl.lisp, fin.lisp, geo.lisp, iter.lisp, log.lisp, math.lisp, octave.lisp, stat.lisp, tilsla.lisp, url.lisp, withtype.lisp:
+	qualify all float constants as doubles
+
+2000-05-12  Sam Steingold  <sds@loiso>
+
+	* url.lisp (*url-open-init*): new variable
+	(open-url, with-open-url): new keyword argument :init
+
+	* card.lisp, closio.lisp, date.lisp, datedl.lisp, elisp.lisp, geo.lisp, gq.lisp, math.lisp, rpm.lisp, url.lisp, xml.lisp:
+	commend eval-when as CMUCL-specific
+
+	* animals.lisp, autoload.lisp: dropped eval-when around CLOS defs
+
+	* string.lisp (sequence-type): new function
+	(substitute-subseq, substitute-subseq-if): use it
+
+	* inspect.lisp (inspect):
+	renamed to `inspect-cllib' to avoid package-lock errors
+
+	* h2lisp.lisp: removed the CMUCL's pushnew pcl::*defmethod-times*
+
+	* fileio.lisp (file-size-t): surround in `eval-when' for ACL
+
+	* doall.lisp: all `require's in one `eval-when'
+
+	* base.lisp (defpackage cllib): moved `export' here
+
+2000-05-12  rtoy  <rtoy@loiso>
+
+	* geo.lisp:
+	For portability, it's type (double-float 0d0), not (double-float 0.0).
+
+2000-05-11  Sam Steingold  <sds@loiso>
+
+	* html.lisp (stream-unread-char): fixed the call to `unread-char'
+
+2000-05-09  Sam Steingold  <sds@loiso>
+
+	* math.lisp (product-from-to, binomial): export
+
+2000-05-08  Sam Steingold  <sds@loiso>
+
+	* getopt.lisp (parse-object): new function
+	(getopt): new options `allow-less' and `allow-more'
+
+	* xml.lisp (with-xml-file): no messages when `out' is nil
+
+	* log.lisp (with-timing): no message when `out' is nil
+
+	* fileio.lisp (read-from-file): no message when `out' is nil
+
+	* rpm.lisp (rpm-get-available, rpm-get-present):
+	pass `out' to `with-timing'
+
+	* xml.lisp (with-xml-file): new key :out
+
+	* fileio.lisp (read-from-file): pass `out' to `with-timing'
+
+	* log.lisp (with-timing): new key :out
+
+2000-05-04  Sam Steingold  <sds@loiso>
+
+	* getopt.lisp: parse command line arguments - for Lisp scripting
+
+	* log.lisp (elapsed, with-timing): use `pr-secs' without colon
+
+2000-05-02  Sam Steingold  <sds@loiso>
+
+	* url.lisp: *** empty log message ***
+
+	* xml.lisp (xml-stream-in): `eval-when' for CMUCL
+
+	* check.lisp, closio.lisp, fin.lisp, geo.lisp, gnuplot.lisp, gq.lisp, h2lisp.lisp, html.lisp, iter.lisp, laser.lisp, list.lisp, log.lisp, math.lisp, matrix.lisp, miscprint.lisp, octave.lisp, rpm.lisp, server.lisp, simple.lisp, sorted.lisp, stat.lisp, symb.lisp, tilsla.lisp, withtype.lisp:
+	removed declaim optimize
+
+	* fileio.lisp (write-list-to-file): return `len' and `size'
+	(write-to-file): return `file-length'
+
+	* elisp.lisp (string-to-number): floats too
+	replaced `setf fdefinition' with `defsubst'
+
+	* doall.lisp: removed #-gcl
+
+	* datedl.lisp: fixed `declaim ftype' statements
+
+	* clhs.lisp (*clhs-root-local*): new variable
+	(clhs-snarf-examples): use it
+
+	* date.lisp (date-in-list, tomorrow, yesterday, days-between,  next-bad-day, date):
+	fixed `declaim ftype'
+
+	* card.lisp (define-print-method): use `symbol-concat'
+	require :url
+
+	* autoload.lisp (autoload-stream): surround in `eval-when' for CMUCL
+
+	* animals.lisp (node): surround in `eval-when' for CMUCL
+
+2000-05-01  Sam Steingold  <sds@loiso>
+
+	* card.lisp, date.lisp, datedl.lisp, fileio.lisp, fin.lisp, geo.lisp, gnuplot.lisp, gq.lisp, iter.lisp, list.lisp, log.lisp, math.lisp, miscprint.lisp, rpm.lisp, stat.lisp, symb.lisp, tilsla.lisp, url.lisp:
+	fixed values declaration
+
+2000-04-27  Sam Steingold  <sds@loiso>
+
+	* gq.lisp (get-quotes-apl): ignore errors in date
+	(get-quotes-yahoo, get-quotes-sm): specify float type
+
+	* matrix.lisp (bilinear): quote
+	(matrix-solve): ignore condition
+
+	* xml.lisp (with-xml-file): removed unused vars
+
+	* html.lisp (*html-parse-tags*): removed; always parse
+	(read-html-markup): use `xml-read-comment'
+	(read-next): <GROSS_HACK> never append in `ts-pull-next'
+
+	* matrix.lisp (bilinear): fixed `loop' keywords
+
+	* datedl.lisp: minor
+
+	* math.lisp (kurtosis-skewness, kurtosis-skewness): new functions
+
+	* matrix.lisp, stat.lisp: added matrix.lisp
+
+	* datedl.lisp (weighted-mean-dl): call `weighted-mean' appropriately
+
+	* math.lisp (make-primes-list): use `with-timing'
+	(weighted-mean, weighted-geometric-mean): two keyword
+	 args `value' and `weight' instead of one `key'
+	(weighted-mean-cons, weighted-geometric-mean-cons): removed
+	(weighted-standard-deviation): new function
+
+	* xml.lisp (with-xml-file): use `with-timing'
+
+	* geo.lisp: do not require :log
+
+	* rpm.lisp (rpm-get-available, rpm-get-present): use `with-timing'
+
+	* fileio.lisp (write-list-to-file, read-list-from-file, write-to-file,  read-from-file):
+	use `with-timing'
+
+	* clhs.lisp (clhs-write-entities): use `with-timing'
+
+	* log.lisp (elapsed-1): removed
+	(with-timing): new macro
+
+2000-04-21  Sam Steingold  <sds@loiso>
+
+	* math.lisp (product-from-to, binomial): new functions
+	(!): use `product-from-to'
+	(!!): sped up
+
+2000-04-19  Sam Steingold  <sds@loiso>
+
+	* inspect.lisp (inspect-frontend :http): use `socket-server-string'
+
+2000-04-10  Sam Steingold  <sds@loiso>
+
+	* simple.lisp (list-length-dotted): declare type of `nn'
+
+	* closio.lisp, fileio.lisp: moved `pr' from closio to fileio
+
+	* sorted.lisp (top-bottom-fl): `label' defaults to `identity'
+
+	* animals.lisp (save-restore-network): fixed call to `save-restore':
+	:clos is now :readtable, require :closio for that
+
+	* math.lisp (number-sum-split): fixed `declare'
+
+	* url.lisp (url-ask, url-login-ftp): use `socket-host/port'
+
+	* server.lisp (cl-server-mesg): new function
+	(cl-server): use it
+
+2000-04-04  Sam Steingold  <sds@loiso>
+
+	* xml.lisp (xml-read-entity): the lambdas now take an optional argument
+	to specify whethe we need a string or a stream
+	(xml-entity): `string' keyword argument to use that
+	(xml-expand-entities): revived
+	(xml-obj-from-list): call it to expand the entities
+	in the attribute values
+	(xml-ascii-p, xml-de-uunicode): new functions
+	(print-object xml-obj): use them
+	(stream-length): new function
+	(xml-trim-key): removed
+	(read-xml): handle non-UNICODE lisps
+	(with-xml-input, with-xml-file): new macros
+	(xml-read-from-file): use `with-xml-file'
+
+	* string.lisp (substitute-subseq, substitute-subseq-if): do not cons
+	when there is nothing to change
+
+	* fileio.lisp (write-to-file): autoload
+
+	* xml.lisp (xml-size): compute the size of the xml document
+	(*xml-print-xml*): print an xml-obj for xml parsing
+	(print-object xml-obj): use the above
+
+	* fileio.lisp (file-newer): no need to call `probe-file'
+	(latest-file): access the dist once per file
+
+2000-04-03  Sam Steingold  <sds@loiso>
+
+	* server.lisp: server needs prompt for `package-short-name'
+
+	* log.lisp (get-float-time, elapsed):
+	0.0 is not double float by default
+
+2000-03-31  Sam Steingold  <sds@loiso>
+
+	* xml.lisp: now works with entities too
+	(*xml-ent-file*, *xml-keep-comments*): new variables
+	(xml-init-entities, xml-read-entity, xml-entity, xml-read-tag,
+	 xml-read-from-file): new functions
+	many more changes, too numerous to mention
+
+2000-03-30  Sam Steingold  <sds@loiso>
+
+	* clhs.lisp (clhs-write-entities):
+	exported; special case for symbol `lambda',
+	which has separate symbol and macro pages; publish a symbol as a
+	`literal', not a `function'
+
+2000-03-28  Sam Steingold  <sds@loiso>
+
+	* url.lisp (url-get-port): `socket-service-port' returns a `servent'
+
+2000-03-27  Sam Steingold  <sds@loiso>
+
+	* clhs.lisp (clhs-write-entities):
+	wipe out the file (since CL lacks file
+	truncation functionality, this is the only way to go)
+
+	* animals.lisp, autoload.lisp, base.lisp, card.lisp, check.lisp, closio.lisp, date.lisp, datedl.lisp, doall.lisp, elisp.lisp, fileio.lisp, fin.lisp, geo.lisp, gnuplot.lisp, gq.lisp, h2lisp.lisp, html.lisp, iter.lisp, laser.lisp, list.lisp, log.lisp, math.lisp, miscprint.lisp, octave.lisp, prompt.lisp, rpm.lisp, server.lisp, simple.lisp, sorted.lisp, stat.lisp, string.lisp, symb.lisp, tilsla.lisp, url.lisp, withtype.lisp:
+	uniform (c) statement
+
+	* clhs.lisp: Generate the CLHS entities
+	require :string for `substitute-subseq'
+	(+clhs-alist+): new constant
+	(clhs-write-entity, clhs-write-entities): new functions
+
+2000-03-24  Sam Steingold  <sds@loiso>
+
+	* string.lisp (substitute-subseq): use `reduce' instead of `apply'
+	(substitute-subseq-if): new function
+
+	* fileio.lisp (read-from-file): `repeat' can be T, to read all objects
+
+	* htmlgen.lisp (close): new method
+	(with-html-output): use `with-open-stream'
+
+2000-03-23  Sam Steingold  <sds@loiso>
+
+	* html.lisp (read-next): bind `*read-default-float-format*'
+
+	* gq.lisp (read-pfl, read-hist): bind `*read-default-float-format*'
+
+	* xml.lisp: everything but the entities
+	(compress-whitespace): new function
+
+	* withtype.lisp (+whitespace+, whitespace-char-p): moved here
+
+	* string.lisp: require :withtype for `index-t'
+
+	* prompt.lisp: fixed `require', added `provide' and `in-package'
+
+	* inspect.lisp (insp-check): use `warn' instead of `assert'
+
+	* prompt.lisp: boldify the prompt in xterm (extracted from base.lisp)
+
+2000-03-22  Sam Steingold  <sds@loiso>
+
+	* base.lisp: removed the prompt stuff
+
+	* gnuplot.lisp, url.lisp: fixed `require' statements
+
+	* gq.lisp (save-data): bind `*package*' to `+kwd+', use `file-length'
+	instead of `read' to find out whether the file is new
+
+2000-03-21  Sam Steingold  <sds@loiso>
+
+	* xml.lisp: added xml.lisp - XML parsing
+
+	* url.lisp (*browsers*): support more browsers
+
+	* elisp.lisp: minor formatting
+
+	* inspect.lisp (inspection): commented
+	(insp-check): new function
+	(get-insp): use it
+	(*inspect-browser*): new variable
+	(inspect-frontend :http): use it
+	(inspect): use it for the new :browser keyword arg
+
+	* fileio.lisp: do not require `closio' anymore
+	(read-from-file): autoload and use keyword arguments :repeat and
+	:readtable instead of the optional argument
+	(save-restore): ditto
+
+2000-03-17  Sam Steingold  <sds@loiso>
+
+	* inspect.lisp (inspect-read-clean-eval): new function
+	(inspect-frontend :tty): use it for :eval and :modify
+
+2000-03-15  Sam Steingold  <sds@loiso>
+
+	* inspect.lisp: Use a vector instead of a hash to keep the history.
+	Re-inspect Self actually works correctly now.
+	(*inspect-hash*, *inspect-count*): deleted
+	(*inspect-all*): new variable (vector with a `fill-pointer')
+	(inspection): init `id' from (fill-pointer *inspect-all*)
+	(insp-left-p): check for :up too (just in case)
+	(inspect-backend :around): do not push the INSPECTION object into
+	 `*inspect-all*' when :id is given
+	(get-insp): call `inspect-backend' with :id on :s
+	(inspect-finalize): clean `*inspect-all*'
+	(insp-num-slots-print): new function (how many slots to print)
+	(print-inspection): use it
+
+	* inspect.lisp: do not use `print-object':
+	(inspect-frontend): call `print-inspection' directly, not `princ'
+
+2000-03-13  Sam Steingold  <sds@loiso>
+
+	* inspect.lisp: No recursion; browsing works as expected
+	(*inspect-depth*): removed
+	(inspection): added `id' and `pos', removed `left' and `right'
+	(*inspect-count*, *inspect-hash*): new variables
+	(set-slot-error): new function
+	(with-nth-hash-slot): new macro
+	(inspect-backend): handle hash tables, ratios and complex numbers
+	(inspect-finalize): new generic function
+
+	* miscprint.lisp: autoload `print-hash-table'
+
+	* htmlgen.lisp: export `with-tag'
+
+	* html.lisp: typo
+
+2000-03-09  Sam Steingold  <sds@loiso>
+
+	* html.lisp, htmlgen.lisp: require port:gray
+
+	* inspect.lisp: Added the HTTP frontend
+	(inspect-child-loop, http-command, http-insp-out): new functions
+	(*inspect-http-server*, *inspect-http-socket*): new parameters
+
+	* url.lisp (*browsers*): use more common default paths
+	(browse-url): fixed the `run-prog' call
+
+	* string.lisp (substitute-subseq): optimized for many changes
+
+	* htmlgen.lisp (html-stream): new Gray stream
+	(with-html-output): new macro, `with-tag' is defined inside it
+	 with `macrolet'
+	(with-tag, with-open-html): removed
+	(directory-index): modified accordingly
+
+	* html.lisp: do not export the things which are now in htmlgen.lisp
+
+2000-03-03  Sam Steingold  <sds@loiso>
+
+	* url.lisp (*browsers*): export
+	(browse-url): renamed from `view-url', new key arg `out'
+
+	* geo.lisp (view-country): `view-url' is now called `browse-url'
+
+	* autoload.lisp (autoload-stream): `fresh-line' log
+
+	* htmlgen.lisp: initial version - extracted from html.lisp
+
+	* html.lisp: moved HTML generation to htmlgen
+
+	* url.lisp (*mail-host-address*, *user-mail-address*): moved to base
+
+	* base.lisp (*mail-host-address*, *user-mail-address*): new variables
+
+	* inspect.lisp: initial version - tty frontend (almost?) works
+
+	* simple.lisp (list-length-dotted): new function
+
+2000-03-01  Sam Steingold  <sds@loiso>
+
+	* closio.lisp (arglist, class-slot-list): moved to port:sys
+
+	* autoload.lisp: do not load unnecessary stuff when loading autoloads
+	(*autoload-defun*): new variable
+	(autoload-generate): write it into the autoloads file
+
+2000-02-18  Sam Steingold  <sds@loiso>
+
+	* autoload.lisp, check.lisp, closio.lisp, datedl.lisp, doall.lisp, fileio.lisp, html.lisp, iter.lisp, laser.lisp, log.lisp, miscprint.lisp, server.lisp, simple.lisp, sorted.lisp, stat.lisp, string.lisp, symb.lisp, tilsla.lisp, withtype.lisp:
+	extracted from the old files
+
+	* elisp.lisp, fin.lisp, geo.lisp, gnuplot.lisp, gq.lisp, h2lisp.lisp, list.lisp, math.lisp, octave.lisp, rpm.lisp, url.lisp, animals.lisp, base.lisp, card.lisp, clhs.lisp, date.lisp:
+	reworked for defsystem
+
+2000-01-25  Sam Steingold  <sds@loiso>
+
+	* gq.lisp (gq-complete-url): print to `*gq-error-stream*' here
+	(get-quotes-apl, get-quotes-pf, get-quotes-sm, get-quotes-sm):
+	 modified accordingly
+	(get-quotes-yahoo): new function
+	(*get-quote-url-list*): added yahoo
+
+	* url.lisp (ts-pull-next): bugfix when '.' is the last char
+	(next-number): add #\% to kill
+	(next-token): print `tyoe-of' token
+
+2000-01-19  Sam Steingold  <sds@loiso>
+
+	* base.lisp: boldify allegro prompt too
+
+	* elisp.lisp: require print for `make-clos-readtable'
+
+	* list.lisp (with-collect): do not convert case in `gensym'
+
+	* math.lisp (number-sum-split, all-num-split): new functions
+
+	* rpm.lisp (*rpm-locations*): fixed some paths
+	(rpm-read): close the stream
+
+	* url.lisp (resolve-host-ipaddr): fixed for CLISP/syscalls
+
+	* gq.lisp (get-quotes-sm): expanded debug
+
+2000-01-06  Sam Steingold  <sds@loiso>
+
+	* gq.lisp: fewer #+/#-
+	(get-quotes-apl): call `infer-date'
+	(infer-date): first arg can be a date
+	(process-results): better output formatting
+	(update-quotes): new key `log'
+
+1999-11-24  Sam Steingold  <sds@loiso>
+
+	* clhs.lisp, h2lisp.lisp: bring up to date (long overdue checkin)
+
+1999-11-12  Sam Steingold  <sds@loiso>
+
+	* fin.lisp (mgg-term, mgg-discount): doc fixes.
+
+1999-11-02  Sam Steingold  <sds@loiso>
+
+	* gq.lisp (pr-res): use `formatter'; 8th optional arg.
+	(process-results): adapt to new `pr-res'; `out' must be a stream.
+	(update-quotes): dump the `ia' business.
+
+1999-10-29  Sam Steingold  <sds@loiso>
+
+	* fin.lisp (solow-next-year): renamed from `next-year'.
+	(mgg-prepay): better output formatting.
+
+1999-10-25  Sam Steingold  <sds@loiso>
+
+	* rpm.lisp (*rpm-local-paths*): removed eagle-specifics.
+	(rpm-downloaded): look in both `*rpm-local-target*' and
+	`*rpm-local-paths*'.
+	(rpm-list-rpm): new keyword argument `local'.
+
+	* gnuplot.lisp: ditched the eagle-specific stuff
+
+	* elisp.lisp: Support LispWorks and GCL.
+
+	* animals.lisp: Surround some variable names with a `*'.
+	(anml-chop-article): new function.
+	(save-restore-animals): new function.
+	(print-object node): new method.
+	(save-restore-network): new function.
+
+1999-10-19  Sam Steingold  <sds@loiso>
+
+	* gq.lisp (get-quotes-pf): updated.
+	(infer-date): work with no args.
+	(process-results): better date inference.
+	(update-quotes): new `:debug' keyword argument.
+
+	* url.lisp (ts-skip-scripts): new function.
+
+	* card.lisp (define-print-method): do not call `fdefinition'.
+
+	* date.lisp (previous-working-day): new function.
+
+1999-10-14  Sam Steingold  <sds@loiso>
+
+	* octave.lisp: removed eagle-related junk
+
+1999-10-13  Sam Steingold  <sds@loiso>
+
+	* list.lisp (with-sublist): cosmetic gensym rename.
+
+	* gq.lisp (get-quotes-apl): updated.
+	(*get-quote-url-list*): added ports (solaris can't guess http ports)
+	(code): added a method for PFL.
+	(update-quotes): bind `*gq-error-stream*' to nil.
+
+	* math.lisp (percent-change): handle 0 arguments.
+
+1999-10-12  Sam Steingold  <sds@loiso>
+
+	* url.lisp (socket-service-port):
+	corrected `services' path under win32.
+	(url-ask): use `*url-replies*'.
+	(url-login-ftp): fixed the error message.
+	(html-stream): new Gray stream.
+	(next-token, next-number): more verbose.
+
+	* base.lisp: Autodetect the compiled extension (`*fas-ext*').
+	Treat TERM "emacs" as "dumb" for `lisp::*prompt*'.
+	Purged Eagle proprietary modules.
+
+1999-10-06  Sam Steingold  <sds@loiso>
+
+	* fin.lisp: New file.
+
+1999-06-04  Sam Steingold  <sds@loiso>
+
+	* date.lisp (dl-fl, with-saved-dl, with-truncated-dl):
+	use `with-gensyms'.
+	(with-saved-dls): call `gensym' with an argument.
+	(volatility-dl): fix the second value.
+	(print-volatilities):  align the years.
+
+1999-06-03  Sam Steingold  <sds@loiso>
+
+	* rpm.lisp (download-data): do not include `url', use a alot instead.
+	(dld-reset): set `dld-all' too.
+	(rpm-list-size): new function.
+	(*rpm-locations*): use `macrolet' to init.
+	(rpm-prune-list): use `remove-if-not' instead of `mapcan'.
+	(rpm-get-available): replaced `&optional' with `&key';
+	new argument: `err'.
+
+	* url.lisp (+bad-url+): new constant.
+	(*rfc-base*): new variable.
+	(protocol-rfc): renamed from `url-rfc'.
+	(socket-server &c): support CMUCL & LispWorks.
+	(*url-replies*): new variable.
+	(url-ask): use it; `END' can be symbolic now.
+	(cl-server): nascent CL server stuff (ripped from CMUCL).
+
+	* base.lisp (compose): partially reverted the previous patch.
+
+	* base.lisp (with-gensyms): new macro.
+	(map-in): use it.
+	(compose): treat quoted symbols properly.
+
+1999-05-24  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp: (plot-dated-lists, plot-lists, plot-lists-arg):
+	`ylabel' default depends on `rel'.
+
+	* geo.lisp (geo-data): complex `crd' instead of `lat'/`lon'.
+	(print-geo-coords): the `coordinates' are always a complex number.
+	(*country-file*): removed.
+	(save-restore-country-list): use `save-restore'.
+	(find-country): use `remove-if-not'.
+
+	* math.lisp (volatility): `dev-fn' keyword argument.
+	(integrate-simpson): fixed `sum-odd' loop `:sum' type statement.
+
+	* date.lisp (timestamp): moved to util.lisp.
+	(check-dates): check and fix roll-overs too.
+	(*rollover-bad-date*): new variable.
+	(rollover): use it.
+	(dl-overlap): use `last' instead of `nthcdr'/`nreverse'.
+
+	* list.lisp (flatten, filter): new functions.
+	(call-on-split): use filter.
+
+	* base.lisp (package-short-name): made public.
+	(quit): made public.
+	(*current-project*): "rules" depends on "report", "card"
+	does not depend on "elisp"; added "animals".
+
+	* animals.lisp (node): new class; this begins a network implementation.
+	(*network*, *root-node*): new variables.
+	(symbol->node, resolve, mknode, get-symbol, add-node, play-game):
+	new functions.
+	(get-string): doesn't take a `stream' argument anymore.
+	(fix-question, get-question): new functions.
+	(anml-finish): use `get-question'.
+
+1999-05-20  Sam Steingold  <sds@loiso>
+
+	* date.lisp (with-truncated-dl): truncate both forward and backwards.
+	(volatility-dl): take a keyword arg dev-fn.
+	(exp-mov-avg-dl): fixed :name.
+
+1999-05-15  Sam Steingold  <sds@loiso>
+
+	* rpm.lisp (download-data): new slot - `all'.
+	(*rpm-locations-timeout*): new user variable.
+	(rpm-new-packages): renamed `rpm-get-available'.  use
+	`*rpm-locations-timeout*' to decide whether to get again.
+	(show-rpms): new `local' optional argument.
+
+1999-05-12  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp (plot-header): new options `xfmt' and `yfmt'.
+
+1999-05-11  Sam Steingold  <sds@loiso>
+
+	* date.lisp (date-latest, date-earliest): new functions.
+
+	* date.lisp (infer-timezone): use error 'case-error.
+	(date<3, date>3): new functions.
+
+1999-05-05  Sam Steingold  <sds@loiso>
+
+	* url.lisp: LispWorks compatibility:
+	(open-socket, resolve-host-ipaddr, open-socket-server):
+	work with LispWorks; added the `not-implemented' condition.
+	(socket-host, socket-port): added the `not-implemented' condition.
+	(code, case-error): moved to base.lisp.
+
+	* list.lisp (nsplit-list): use the `case-error' condition.
+
+	* base.lisp: LispWorks & GCL compatibility:
+	(*fas-ext*): added LispWorks extension.
+	(code, case-error): moved the conditions here.
+	(not-implemented): new `code' condition.
+	(run-prog, pipe-output, pipe-input): works with LispWorks.
+	(probe-directory): added LispWorks and generic code.
+	(chdir, setf default-directory): base the latter on the former.
+
+1999-05-03  Sam Steingold  <sds@loiso>
+
+	* url.lisp (login): new `network' condition.
+	(open-socket-retry): return a socket or signal an error.
+	(open-url): simplified.
+	(url-ask): signal an error.
+	(ftp-get-passive-socket): removed the loop.
+	(*ftp-anonymous-passwords*): new variable.
+	(url-login-ftp): use it; signal a `login' error on falure.
+
+	* rpm.lisp (*rpm-max-retry*):
+	new variable.  Replaced the ubiquitous use of
+	`timeout' keyword argument with `*rpm-timeout*'.
+	(rpm-pos): new function.
+	(rpm-skip-p): skip "pre" releases.
+
+1999-04-26  Sam Steingold  <sds@loiso>
+
+	* url.lisp (with-open-html): moved `meta' to `head'; added `link'.
+
+1999-04-22  Sam Steingold  <sds@loiso>
+
+	* card.lisp: Added relevant URLs.
+	(card-print-as-vcard): fixed `tz' printing.
+	(name-print-as-vcard): fixed slot order.
+	(address-print-as-vcard): fixed `street3'.
+	(card-read-vcard): new function; can read vCard files now.
+
+	* elisp.lisp (el::make-elisp-readtable): call `make-object-readtable'.
+	(*elisp-readtable*): a constant now.
+
+1999-04-21  Sam Steingold  <sds@loiso>
+
+	* date.lisp (dttm->string): print the (zero) offset.
+	(date): added a sample (commented out) CLOS implementation.
+
+1999-04-20  Sam Steingold  <sds@loiso>
+
+	* card.lisp: BBDB input and all output methods work now.
+	(card-output): slots contain symbols, not functions.
+	(set-reading-braces): removed; use `el::make-elisp-readtable'.
+	(init-sans-null-args): new function for `initialize-instance'.
+	(initialize-instance card): primary method now.
+	(*card-apellations*, *card-suffixes*): new variables.
+	(initialize-instance name): new method.
+	(card-org/title, time2string): new functions for printing.
+	Searching:
+	(*user-cards*): new variable.
+	(object-match-p, find-card): new functions.
+
+	* base.lisp (*current-project*):
+	card now requires `elisp' (for reading BBDB).
+
+	* elisp.lisp (el::make-elisp-readtable): redefine macro #\".
+	(el::read-elisp-special): handle #\": \n, \r, \f, \t, \v.
+
+	* url.lisp (url string):
+	handle URL with cgi having confusing arguments.
+
+	* base.lisp: Handle the new file card.lisp.
+
+1999-04-19  Sam Steingold  <sds@loiso>
+
+	* url.lisp (url-time): print the time difference.
+	(open-url, url-get): fixed the call to (error 'code).
+
+	* card.lisp: New file.
+
+	* url.lisp (*url-default-max-retry*): new user variable, the
+	default for the `max-retry' key.
+
+1999-04-18  Sam Steingold  <sds@loiso>
+
+	* base.lisp: Shut up CMUCL GC.
+
+1999-04-17  Sam Steingold  <sds@loiso>
+
+	* rpm.lisp (download-data): new structure (AKA dld).
+	(*rpm-locations*): a list of `download-data', replaces `*rpm-urls*'.
+	(rpm-print-rpm-url): removed (replaced with `download-data').
+	(rpm-new-packages, rpm-list-rpm, rpm-get-new-rpms &c): use `dld'.
+
+	* math.lisp (safe-fun): use `values-list'.
+	(safe-fun1): new macro.
+
+1999-04-16  Sam Steingold  <sds@loiso>
+
+	* url.lisp (with-tag): added `value' key; better default for `terpri'.
+	(with-open-html): added `head', `comment' and `footer' keys;
+	fixed `doctype' key.
+	(directory-index): added `&rest opts' for comment.
+	use `value' key when calling `with-tag'.
+
+1999-04-15  Sam Steingold  <sds@loiso>
+
+	* base.lisp (current-time): print `tz->string' with ~a.
+
+1999-04-12  Sam Steingold  <sds@loiso>
+
+	* base.lisp (tz->string):
+	new function: print the TimeZone to a string like "-0400"
+	(current-time): use it.
+
+1999-04-11  Sam Steingold  <sds@loiso>
+
+	* url.lisp: Added `*html-output*' and `with-tag'.
+	(with-open-html): bind `*html-output*'.  use `with-tag'.
+	(directory-index): use `with-tag'.
+
+1999-04-09  Sam Steingold  <sds@loiso>
+
+	* list.lisp:
+	Replaced `collecting' with `with-collect' (multiple collection).
+
+	* gnuplot.lisp: `+gnuplot-epoch+' is now an integer, not a date.
+
+	* rpm.lisp:
+	Added `short-string-to-rpm'.  Cleaned up the `rpm' generic function.
+
+	* animals.lisp: Use `string-beg-with' in `anml-add-article'.
+
+	* base.lisp: Moved `*current-project*' here.
+
+	* list.lisp: Added `collecting'.
+
+1999-04-06  Sam Steingold  <sds@loiso>
+
+	* url.lisp: Added `directory-index' and `with-open-html'.
+
+1999-04-05  Sam Steingold  <sds@loiso>
+
+	* date.lisp:
+	Added `date-next-year', `date-next-month', `date-next-all'.
+
+1999-03-27  Sam Steingold  <sds@loiso>
+
+	* base.lisp:
+	Added condition `provide-require' and function `require-name-to-file'.
+	Use the latter in `sds-require' and `autoload'.
+	Added printing `lambda-list-keywords' in `sysinfo'.
+
+1999-03-24  Sam Steingold  <sds@loiso>
+
+	* rpm.lisp:
+	4 new fields in the RPM structure: `btime', `itime', `ftime' and `size'.
+	Removed `+unix-epoch+'.
+	Handle long `ls' output in (rpm string) method.
+	Added `rpm-list-rpm'.
+
+	* url.lisp: More `*html-specials*'.  Added `url-rfc'.
+	`socket-service-port' returns 4 values now.
+	Added `*url-bytes-transferred*', `*url-opening-time*' and `url-eta'.
+	Added two new keyword arguments to `ftp-list' - :name and :log.
+
+1999-03-20  Sam Steingold  <sds@loiso>
+
+	* date.lisp: Added `+unix-epoch+' and `unix-date'.
+
+1999-03-17  Sam Steingold  <sds@loiso>
+
+	* math.lisp: Added `eval-cont-fract' and `fract-approx'.
+
+1999-03-02  Sam Steingold  <sds@loiso>
+
+	* base.lisp: Added `defgeneric' `code'.
+
+	* date.lisp: Added `dl-last-date'.  Fixed `dl-next-chg'.
+	Remove the first list when it is too short in `(setf dl-overlap)'.
+
+1999-02-25  Sam Steingold  <sds@loiso>
+
+	* gq.lisp: Updated for the new `dated-list'.
+
+	* date.lisp: Added constant `+bad-dl+'.
+	Added macros `with-saved-dl' and `with-saved-dls'.
+	Macro `with-truncated-dl' uses `with-saved-dl' now.
+
+	* math.lisp: Moved `lincom' here from date.lisp.
+
+	* date.lisp:
+	Added `date-f-t', `date<=3', `date>=3', `dl-reset', `mk-dl', `rollover'.
+	Removed `dl-copy-shift'.  Fixed `dl-shift', `dl-overlap'.
+	Improved `fixing' in `check-dates'.
+	Added `cp' to `dated-list'.
+	Added `describe-object' method for `dated-list'.
+
+	* math.lisp: `volatility': swapped return values.
+
+1999-02-23  Sam Steingold  <sds@loiso>
+
+	* date.lisp: Major changes: many lists in a dated list;
+	`check-dates' can fix some problems.
+
+1999-02-22  Sam Steingold  <sds@loiso>
+
+	* list.lisp: `call-on-split': new key `:min-len'.
+
+	* math.lisp:
+	Use `:min-len' key in the `call-on-split' call in `volatility'.
+
+	* elisp.lisp: Works now.
+
+	* base.lisp: Added Naggum's ACL readtable fix.
+	Added `probe-directory' and *fas-ext*.
+
+1999-02-20  Sam Steingold  <sds@loiso>
+
+	* elisp.lisp: New file.
+
+1999-02-19  Sam Steingold  <sds@loiso>
+
+	* rpm.lisp: `rpm-get-new-rpms': fix for timeout condition.
+
+1999-02-09  Sam Steingold  <sds@loiso>
+
+	* rpm.lisp: Removed `catch timeout'.
+
+	* url.lisp: Removed `throw-timeout'.
+	Added `socket-host', `socket-port' and a condition `timeout'.
+
+1999-02-08  Sam Steingold  <sds@loiso>
+
+	* url.lisp: Updated for cmucl 18b.
+
+1999-02-02  Sam Steingold  <sds@loiso>
+
+	* date.lisp: Added `to-string', fixed `string->dttm'.
+
+	* url.lisp: Moved `html-translate-specials' &c to clhs.lisp
+	Expanded `url-time'.
+
+1999-02-01  Sam Steingold  <sds@loiso>
+
+	* date.lisp: Added `purge-string' and `*string-junk*'.
+	Fixed `string->dttm' for the case when the date starts with a weekday.
+
+	* date.lisp: Use `string-tokens' in `date'.
+
+1999-01-28  Sam Steingold  <sds@loiso>
+
+	* base.lisp: Moved `with-open-pipe' here.
+	Renamed `current-environment' to `sysinfo'.
+
+1999-01-26  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp: Added `plot-msg'.
+
+1999-01-24  Sam Steingold  <sds@loiso>
+
+	* rpm.lisp: Added `rpm-skip-p', `*rpm-skip*', `rpm-print-rpm-url'.
+	Use `with-open-pipe'.
+
+1999-01-15  Sam Steingold  <sds@loiso>
+
+	* clhs.lisp: New file.
+
+1999-01-13  Sam Steingold  <sds@loiso>
+
+	* date.lisp, math.lisp:
+	Replaced CMUCL-specific print functions with a call to
+	`print-struct-object'.
+
+	* url.lisp:
+	Replaced top-level `*html-readtable*' creation forms with a new
+	function, `make-html-readtable'.
+
+	* h2lisp.lisp:
+	Replaced top-level `*c-readtable*' creation forms with a functions
+	`make-c-readtable'.
+
+	* url.lisp:
+	`read-html-markup' now handles #\;, #\: and #\, so it is not necessary
+	now to remove these characters from buffer in `ts-pull-next'.
+
+1999-01-12  Sam Steingold  <sds@loiso>
+
+	* base.lisp: Added `excl::time-other-base' for ACL's `time'.
+
+	* h2lisp.lisp: New file.
+
+	* list.lisp: Fixed the previous feature.
+
+	* list.lisp: Added key `obj' to `nsplit-list'.
+
+1999-01-10  Sam Steingold  <sds@loiso>
+
+	* gq.lisp: Replaced `gq-fix-date' with `gq-guess-date'.
+
+1999-01-09  Sam Steingold  <sds@loiso>
+
+	* url.lisp: Extracted `ts-pull-next' from `read-next'.
+
+1999-01-08  Sam Steingold  <sds@loiso>
+
+	* date.lisp: Replaced calls to `date2days' with calls to `date-dd'.
+	Speedups expected.
+
+	* url.lisp: Made `read-html-markup' skip `*html-specials*'.
+	Added `with-timeout' for CMUCL, `socket-to-file', `*ts-kill*' (used in
+	`read-next'), `url-get' (unifies all `url-get-*' functions).
+
+	* gq.lisp: Fixed `get-quotes-sm'.
+
+1999-01-07  Sam Steingold  <sds@loiso>
+
+	* math.lisp, list.lisp, date.lisp:
+	Use `index-t' instead of (unsigned-byte 20).
+
+	* gnuplot.lisp: Use `index-t' instead of (unsigned-byte 20).
+	Use `close-pipe'.
+
+	* url.lisp: Use `index-t' instead of (unsigned-byte 20).
+	Use `file-size-t' instead of (unsigned-byte 32).
+
+	* geo.lisp: Use `index-t' instead of (unsigned-byte 20).
+
+	* rpm.lisp: Use `close-pipe', `index-t' instead of (unsigned-byte 20).
+	Added `version<' and a test suite for it.
+
+	* base.lisp: Added `index-t'.
+
+1998-12-29  Sam Steingold  <sds@loiso>
+
+	* url.lisp:
+	Added `*nntpserver*', `url-get-host', `*url-default-sleep*',
+	`*url-default-timeout*', `sleep-mesg', `with-timeout',
+	`y-or-n-p-timeout', `finger'.
+	Added news URL handling.
+	Added `bin' argument to `ftp-get-passive-socket'.
+
+1998-12-28  Sam Steingold  <sds@loiso>
+
+	* base.lisp: Added `close-pipe'.
+
+1998-12-23  Sam Steingold  <sds@loiso>
+
+	* gq.lisp: Added `*gq-error-stream*'.
+
+1998-12-10  Sam Steingold  <sds@loiso>
+
+	* date.lisp: Added `dttm->string', `string->dttm' and `infer-timezone'.
+	Made `infer-month' return NIL instead of signalling an error when the
+	month cannot be inferred.
+
+1998-12-09  Sam Steingold  <sds@loiso>
+
+	* base.lisp: Added `pipe-input'.  Sorted autoloads.
+
+1998-12-07  Sam Steingold  <sds@loiso>
+
+	* url.lisp: Added MAILTO handling; made :prot a keyword.
+	New function: `send-mail'.
+	Renamed `ftp-ask' to `url-ask'.
+
+1998-12-03  Sam Steingold  <sds@loiso>
+
+	* rpm.lisp: Added a `note' field to the `rpm' structure.
+	Added `rpm-get-present', `show-rpms', `rpm-current'.
+
+1998-11-23  Sam Steingold  <sds@loiso>
+
+	* math.lisp: Added MDL structure.
+
+1998-11-21  Sam Steingold  <sds@loiso>
+
+	* url.lisp:
+	Added `throw-timeout' to `open-socket-retry' and `open-url'.
+
+	* rpm.lisp: Added `timeout' catch/throw.
+
+1998-11-20  Sam Steingold  <sds@loiso>
+
+	* url.lisp: Added reget functionality to `ftp-get-file'.
+
+	* url.lisp: Added `open-socket-retry'.
+
+1998-11-19  Sam Steingold  <sds@loiso>
+
+	* url.lisp:
+	Added ftp handling: `ftp-ask', `ftp-parse-sextuple', `url-open-ftp',
+	`ftp-get-passive-socket', `ftp-get-file', `*buf-size*', `ftp-list'.
+	Separated `open-url' from `open-socket' and made sure that the former
+	does indeed opens a socket.
+
+	* rpm.lisp:
+	Replaced `*rpm-local-path*' with a list - `*rpm-local-paths*'.
+
+	* rpm.lisp: Moved `binary-pos' to util.lisp.
+
+1998-11-18  Sam Steingold  <sds@loiso>
+
+	* rpm.lisp: New file.
+
+1998-11-17  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp:
+	Reset output with "set output" after printing to flush the buffers, so
+	that the printing takes effect immediately.
+
+1998-11-13  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp: Added option `lines' to `plot-dated-lists'.
+
+	* math.lisp: Added `mean-some'.
+
+	* date.lisp:
+	Added `days-week-day', `date-week-day' and `next-bad-day' for Friday the
+	13th handling.
+
+1998-11-05  Sam Steingold  <sds@loiso>
+
+	* date.lisp: Added `date<=', `date>=' and `date=*'.
+
+1998-10-30  Sam Steingold  <sds@loiso>
+
+	* url.lisp: Replaced `parse-url' with a generic function.
+	Added `*html-specials*', `html-translate-specials',
+	`*hyperspec-root*' and `hyperspec-snarf-examples'.
+
+1998-10-29  Sam Steingold  <sds@loiso>
+
+	* math.lisp:
+	Fixed `standard-deviation-relative' to compute the actual volatility.
+
+1998-10-21  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp:
+	Switched to keys in `plot-header'.  Now, to add a gnuplot option, one
+	needs to modify only `plot-header', not `plot-lists-arg' &c.
+
+1998-10-19  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp:
+	Added `term' (terminal) gnuplot option, allowing for multiple plot
+	windows being displayed simultaneously.
+
+1998-10-09  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp:
+	Added `force-output' to `with-plot-stream', which fixes the CMUCL delay
+	problem.
+
+1998-10-06  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp: Added `xtics', `ytics' and `grid' gnuplot options.
+
+1998-09-03  Sam Steingold  <sds@loiso>
+
+	* math.lisp:
+	Ditched `sqr'.  Added `fibonacci', `primes-to', `divisors', `primep',
+	`make-primes-list', `*primes*', `*primes-file*'.
+	Special case 2 point regression in `regress'; don't signal error on
+	negative error, just print a message and assume 0.
+
+1998-08-05  Sam Steingold  <sds@loiso>
+
+	* date.lisp: Added `date-mon-name' and `date-mon-offset'.
+
+1998-08-03  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp: Use (getenv "SDSPRT") to get the printer name.
+
+	* date.lisp:
+	Renamed `earliest-date' and `latest-date' to `date-min' and `date-max'.
+
+1998-07-31  Sam Steingold  <sds@loiso>
+
+	* geo.lisp, gq.lisp, url.lisp:
+	Declared `stream' as a stream in `print-*'.
+
+	* date.lisp: Added `exp-mov-avg-append' and `lincom'.
+	Declared `stream' as a stream in `print-*'.
+
+	* math.lisp: Declare `stream' as a stream in `print-*'.
+	Take `sqrt' of the correlation in `regress-n'.
+
+1998-07-10  Sam Steingold  <sds@loiso>
+
+	* math.lisp: Added `regress-n' and `regress-poly'.
+	Ditched `regress2' and `det3'.
+
+1998-07-06  Sam Steingold  <sds@loiso>
+
+	* date.lisp:
+	Combined the two &key arguments of `dl-copy-shift' into one optional
+	argument, branching on its type.
+
+1998-06-30  Sam Steingold  <sds@loiso>
+
+	* url.lisp, gq.lisp, geo.lisp: Switched to `print-object'.
+
+1998-06-26  Sam Steingold  <sds@loiso>
+
+	* date.lisp: Added `days-t' and `dl-slot'.  Switched to `print-object'.
+
+	* base.lisp: Added `mk-arr', `map-vec', fixed CMUCL's `getenv'.
+	Reworked `current-environment'.
+
+1998-06-19  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp: Switch from `compose-m' to `compose'.
+
+	* math.lisp, date.lisp: Use `defmethod' to print structures.
+
+	* date.lisp:
+	Made `fix-date' not inline.  Added some declarations for CMUCL.
+
+	* base.lisp: Added `*prompt*'.  Ditched `step-on' and `step-off'.
+
+	* math.lisp: Made `normalize' work with arbitrary sequences.
+	Many minor declarations for CMUCL added.
+
+1998-06-16  Sam Steingold  <sds@loiso>
+
+	* math.lisp: Replaced division with recursion in `!!'.
+
+1998-06-15  Sam Steingold  <sds@loiso>
+
+	* gq.lisp:
+	Made `gq-fix-date' return the last trading date (skip weekend).
+
+1998-06-12  Sam Steingold  <sds@loiso>
+
+	* base.lisp:
+	Made `compose-m' more flexible, renamed it `compose', renamed the
+	function `compose' into `compose-f'.
+	Changed most variables into constants.
+
+1998-06-09  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp:
+	After printing, reset terminal and output back to screen - for flushing.
+
+1998-06-08  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp: In function `plot-lists-arg', fixed :key boundaries.
+
+1998-06-03  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp:
+	Added a plot-key key, for placement of the gnuplot legend.
+
+1998-05-27  Sam Steingold  <sds@loiso>
+
+	* math.lisp: Added :key to `freqs' and moved it to list.lisp.
+
+	* date.lisp: Moved sorted stuff from here to list.lisp.
+
+	* list.lisp: Moved the sorted stuff from date.lisp here.
+	Moved `freqs' from math.lisp here.
+	Added `zero-len-p'.
+
+	* date.lisp: Expanded `date' string recognition to include word months.
+
+1998-05-26  Sam Steingold  <sds@loiso>
+
+	* url.lisp: Adopted to work with ACL 5beta.
+
+1998-05-22  Sam Steingold  <sds@loiso>
+
+	* animals.lisp: Added `anml-add-article'.
+
+1998-05-21  Sam Steingold  <sds@loiso>
+
+	* base.lisp: Adopted to work with ACL 5.
+
+1998-04-29  Sam Steingold  <sds@loiso>
+
+	* date.lisp: Added (defmethod date ((xx integer)) (days2date xx)).
+	The new slot DD works fine and all the saved data has correct dates.
+
+	* gnuplot.lisp:
+	Made `*gnuplot-epoch*' into a constant `+gnuplot-epoch+'.
+	Added function `plot-sec-to-epoch'.
+
+1998-04-21  Sam Steingold  <sds@loiso>
+
+	* list.lisp: Added `with-nsplit' and `call-on-split'.
+
+	* octave.lisp: Replaced `get-currency' with `find-currency'.
+
+1998-04-20  Sam Steingold  <sds@loiso>
+
+	* date.lisp: Made the function slots in dated-list only sybols.
+
+1998-04-03  Sam Steingold  <sds@loiso>
+
+	* date.lisp: Added DD (days since epoch) to the date structure.
+	Ditched *century*.
+
+1998-03-23  Sam Steingold  <sds@loiso>
+
+	* math.lisp, base.lisp, list.lisp: New file.
+
+	* gnuplot.lisp, date.lisp: Fixed to work with ACL and CMU CL.
+
+1998-03-10  Sam Steingold  <sds@loiso>
+
+	* url.lisp: New file.
+
+	* geo.lisp, date.lisp, gq.lisp:
+	Replaced `multiple-value-set*' with `(setf (values ))'.
+
+	* geo.lisp: New file.
+
+1998-02-19  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp:
+	Switched to automatic guessing of data-style via `plot-data-style'.
+
+1998-02-12  Sam Steingold  <sds@loiso>
+
+	* date.lisp, octave.lisp, gnuplot.lisp:
+	Switched to `defgeneric' and `require'.
+
+1998-01-14  Sam Steingold  <sds@loiso>
+
+	* date.lisp: Portability: runs under CMU CL and ACL.
+
+1997-12-08  Sam Steingold  <sds@loiso>
+
+	* animals.lisp: New file.
+
+1997-12-04  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp:
+	Made `with-plot-stream' and `plot-header' plot and print,
+	not just write the file.
+
+	* date.lisp: Moved `channel' to channel.lisp.
+	Made printing respect *print-readably*.
+
+1997-11-12  Sam Steingold  <sds@loiso>
+
+	* date.lisp: Added `regress-dl'.
+
+1997-10-31  Sam Steingold  <sds@loiso>
+
+	* gq.lisp: Added cite-info and strip-html-markup.
+
+1997-10-30  Sam Steingold  <sds@loiso>
+
+	* date.lisp: New file.
+
+1997-10-29  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp: Added plot-functions.
+
+1997-10-17  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp: Added plot-lists-arg.
+
+1997-10-15  Sam Steingold  <sds@loiso>
+
+	* gq.lisp: New file.
+
+	* gnuplot.lisp: Added plot-lists.
+	Made plot-dated-lists plot exponential moving averages.
+
+1997-10-08  Sam Steingold  <sds@loiso>
+
+	* octave.lisp: Moved make-dx-mx here.
+
+1997-10-01  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp: Added plot-dated-lists.
+
+	* gnuplot.lisp: Cosmetic fixes.
+
+1997-09-12  Sam Steingold  <sds@loiso>
+
+	* octave.lisp: flush-stream is not used anymore.
+
+1997-09-11  Sam Steingold  <sds@loiso>
+
+	* octave.lisp: New file.
+
+1997-08-28  Sam Steingold  <sds@loiso>
+
+	* gnuplot.lisp: New file.
+
