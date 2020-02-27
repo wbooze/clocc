@@ -24,7 +24,7 @@
 
 (in-package :cllib)
 
-(export '(*clhs-root* *clhs-hashtable* clhs-doc clhs-write-entities
+(export '(*clhs-root* *clhs-root-local* *clhs-hashtable* clhs-doc clhs-write-entities
           regenerate-etc-files))
 
 #+nil
@@ -38,8 +38,8 @@
   (url "http://www.lispworks.com/documentation/HyperSpec/")
   "The root of the HyperSpec tree.")
 
-(defcustom *clhs-root-local* pathname
-  (parse-namestring "/mnt/hd//HyperSpec/")
+(defcustom *clhs-root-local* url
+  (url (parse-namestring "/home/oleo/pdf//HyperSpec/"))
   "The root of the local HyperSpec tree.")
 
 (defun clhs-snarf-examples (&key (root *clhs-root-local*)
@@ -265,7 +265,7 @@
                 count-e count-i (file-length str))))))
 
 (defun clhs-doc (symb &key (out *standard-output*) force
-                 ((:root *clhs-root*) *clhs-root*))
+                 ((:root *clhs-root-local*) *clhs-root-local*))
   "Dump the CLHS doc for the symbol."
   (declare (type (or symbol string) symb) (stream out))
   (when (or force (null *clhs-hashtable*)) (clhs-init))
